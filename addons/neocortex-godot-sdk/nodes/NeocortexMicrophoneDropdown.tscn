@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://wk0ds16horhd"]
+
+[ext_resource type="Script" uid="uid://ddrnepxpkmqki" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_microphone_dropdown.gd" id="1_vw77m"]
+[ext_resource type="Theme" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTheme.tres" id="2_theme"]
+
+[node name="NeocortexMicrophoneDropdown" type="OptionButton"]
+custom_minimum_size = Vector2(256, 48)
+offset_right = 512.0
+offset_bottom = 48.0
+tooltip_text = "Microphone"
+theme = ExtResource("2_theme")
+clip_text = true
+fit_to_longest_item = false
+script = ExtResource("1_vw77m")

@@ -1,0 +1,255 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/chat_sample.gd" id="1_kin0q"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_character.gd" id="2_50bqj"]
+[ext_resource type="Theme" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTheme.tres" id="3_41uvr"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_frame.gd" id="4_uq6ye"]
+[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/dots.png" id="5_cthku"]
+[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/corner.png" id="6_wkhtf"]
+[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/logo.png" id="7_4xv74"]
+[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexChatPanel.tscn" id="8_ar2j2"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_chat_panel.gd" id="9_yelw0"]
+[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTextChatInput.tscn" id="10_8jyao"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_text_chat_input.gd" id="11_0jj4l"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_chat_ui.gd" id="12_cqafe"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/neocortex_smart_agent.gd" id="13_jrq6h"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/neocortex_face_animator.gd" id="14_xxhk3"]
+
+[sub_resource type="Environment" id="Environment_msc03"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.212, 0.227, 0.259, 1)
+ambient_light_energy = 1.6
+
+[node name="TextChatDemo" type="Node3D" unique_id=2098882689 node_paths=PackedStringArray("chat_ui", "character", "new_session_button")]
+script = ExtResource("1_kin0q")
+chat_ui = NodePath("NeocortexChat")
+character = NodePath("Cora")
+new_session_button = NodePath("UI/Frame/NewChatSessionButton")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1466534094]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 1.5, 2)
+fov = 60.0
+
+[node name="DirectionalLight" type="DirectionalLight3D" parent="." unique_id=2050592494]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
+light_energy = 1.4
+directional_shadow_max_distance = 30.0
+
+[node name="Environment" type="WorldEnvironment" parent="." unique_id=1507434749]
+environment = SubResource("Environment_msc03")
+
+[node name="Cora" type="Node3D" parent="." unique_id=1161976263]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0)
+script = ExtResource("2_50bqj")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1581972602]
+
+[node name="Frame" type="Control" parent="UI" unique_id=1477517537]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+theme = ExtResource("3_41uvr")
+script = ExtResource("4_uq6ye")
+
+[node name="Background" type="Control" parent="UI/Frame" unique_id=496000753]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Dots" type="TextureRect" parent="UI/Frame/Background" unique_id=1271785959]
+modulate = Color(1, 1, 1, 0.1)
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("5_cthku")
+stretch_mode = 1
+
+[node name="LeftTop" type="TextureRect" parent="UI/Frame/Background" unique_id=1715348551]
+modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 96.0
+offset_bottom = 96.0
+mouse_filter = 2
+texture = ExtResource("6_wkhtf")
+
+[node name="RightTop" type="TextureRect" parent="UI/Frame/Background" unique_id=818848943]
+modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = 96.0
+mouse_filter = 2
+texture = ExtResource("6_wkhtf")
+flip_h = true
+
+[node name="LeftBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=2025742187]
+modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -96.0
+offset_right = 96.0
+offset_bottom = -32.0
+mouse_filter = 2
+texture = ExtResource("6_wkhtf")
+flip_v = true
+
+[node name="RightBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=1382905622]
+modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -96.0
+offset_right = -32.0
+offset_bottom = -32.0
+mouse_filter = 2
+texture = ExtResource("6_wkhtf")
+flip_h = true
+flip_v = true
+
+[node name="Logo" type="TextureRect" parent="UI/Frame/Background" unique_id=1363661338]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+texture = ExtResource("7_4xv74")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="UI/Frame/Background" unique_id=559204464]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 60.0
+offset_right = 544.0
+offset_bottom = 100.0
+theme_type_variation = &"NeocortexTitle"
+text = "NEOCORTEX"
+
+[node name="DemoName" type="Label" parent="UI/Frame/Background" unique_id=385178072]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 100.0
+offset_right = 624.0
+offset_bottom = 128.0
+theme_type_variation = &"NeocortexSubtitle"
+text = "Godot SDK · Text Chat Demo"
+
+[node name="Brief" type="Control" parent="UI/Frame" unique_id=1645261569]
+anchors_preset = 0
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -256.0
+offset_bottom = 256.0
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="UI/Frame/Brief" unique_id=1000432927]
+layout_mode = 0
+anchor_right = 1.0
+offset_bottom = 32.0
+theme_type_variation = &"NeocortexHeading"
+text = "DEMO BRIEF"
+
+[node name="Separator" type="ColorRect" parent="UI/Frame/Brief" unique_id=2003791734]
+layout_mode = 0
+anchor_right = 1.0
+offset_top = 36.0
+offset_right = -64.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.1)
+
+[node name="Body" type="RichTextLabel" parent="UI/Frame/Brief" unique_id=1060713691]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+offset_right = -64.0
+mouse_filter = 2
+bbcode_enabled = true
+text = "[b]This scene demonstrates the basic text chat of Neocortex.[/b]
+
+[b][color=#F59E0B]01[/color][/b] Type in the chat box and have a conversation with Cora.
+[b][color=#F59E0B]02[/color][/b] Restart the scene and pick the conversation up where you left off.
+[b][color=#F59E0B]03[/color][/b] Press New Chat Session to start from scratch, as if it is the first time you chat with Cora."
+fit_content = true
+scroll_active = false
+
+[node name="ChatPanel" type="ScrollContainer" parent="UI/Frame" unique_id=1435552477 instance=ExtResource("8_ar2j2")]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = -624.0
+offset_right = 384.0
+offset_bottom = -112.0
+theme = ExtResource("3_41uvr")
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("9_yelw0")
+
+[node name="TextChatInput" type="HBoxContainer" parent="UI/Frame" unique_id=172366344 instance=ExtResource("10_8jyao")]
+custom_minimum_size = Vector2(320, 64)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = -96.0
+offset_right = 384.0
+offset_bottom = -32.0
+theme = ExtResource("3_41uvr")
+theme_override_constants/separation = 16
+script = ExtResource("11_0jj4l")
+placeholder = "Say something to Cora..."
+
+[node name="NewChatSessionButton" type="Button" parent="UI/Frame" unique_id=872432314]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -320.0
+offset_top = 64.0
+offset_right = -64.0
+offset_bottom = 112.0
+text = "New Chat Session"
+
+[node name="NeocortexChat" type="Node" parent="." unique_id=1714753587 node_paths=PackedStringArray("agent", "chat_panel", "text_input")]
+script = ExtResource("12_cqafe")
+agent = NodePath("Character")
+chat_panel = NodePath("../UI/Frame/ChatPanel")
+text_input = NodePath("../UI/Frame/TextChatInput")
+
+[node name="Character" type="Node" parent="NeocortexChat" unique_id=2116032878 node_paths=PackedStringArray("audio_player", "body")]
+script = ExtResource("13_jrq6h")
+audio_player = NodePath("Voice")
+load_history_on_start = true
+body = NodePath("../../Cora")
+
+[node name="Voice" type="AudioStreamPlayer" parent="NeocortexChat/Character" unique_id=602433326]
+
+[node name="FaceAnimator" type="Node" parent="NeocortexChat/Character" unique_id=1783987680 node_paths=PackedStringArray("agent")]
+script = ExtResource("14_xxhk3")
+agent = NodePath("..")

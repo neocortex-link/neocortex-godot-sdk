@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://c4ubnel1j8mgb"]
+
+[ext_resource type="Script" uid="uid://h7xlh7a7b71p" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_message.gd" id="1_kvj5g"]
+[ext_resource type="Theme" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTheme.tres" id="2_theme"]
+
+[node name="NeocortexMessage" type="MarginContainer"]
+custom_minimum_size = Vector2(256, 48)
+offset_right = 256.0
+offset_bottom = 48.0
+size_flags_horizontal = 3
+theme = ExtResource("2_theme")
+script = ExtResource("1_kvj5g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="LeftPadding" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+
+[node name="Avatar" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Initial" type="Label" parent="HBoxContainer/Avatar"]
+layout_mode = 2
+theme_type_variation = &"NeocortexTitle"
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(128, 48)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="HBoxContainer/Panel"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="Sender" type="Label" parent="HBoxContainer/Panel/VBox"]
+layout_mode = 2
+theme_type_variation = &"NeocortexTitle"
+theme_override_font_sizes/font_size = 15
+
+[node name="Label" type="Label" parent="HBoxContainer/Panel/VBox"]
+layout_mode = 2
+theme_type_variation = &"NeocortexTitle"
+theme_override_font_sizes/font_size = 22
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Dots" type="HBoxContainer" parent="HBoxContainer/Panel/VBox"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="Dot1" type="Panel" parent="HBoxContainer/Panel/VBox/Dots"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+
+[node name="Dot2" type="Panel" parent="HBoxContainer/Panel/VBox/Dots"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+
+[node name="Dot3" type="Panel" parent="HBoxContainer/Panel/VBox/Dots"]
+custom_minimum_size = Vector2(26, 26)
+layout_mode = 2
+
+[node name="RightPadding" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2

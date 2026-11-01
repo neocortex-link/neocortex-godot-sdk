@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ckvo15w44fcxg"]
+
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/dock.gd" id="1_dock"]
+
+[node name="Neocortex" type="ScrollContainer"]
+custom_minimum_size = Vector2(240, 300)
+script = ExtResource("1_dock")
