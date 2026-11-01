@@ -1,0 +1,20 @@
+# Godot
+.godot/
+/android/
+
+# Your Neocortex settings hold your API key
+addons/neocortex-godot-sdk/neocortex_settings.tres
+addons/neocortex-godot-sdk/data.cfg
+
+# Kept local: the SDK's development project, tools and notes
+/project.godot
+/icon.svg
+/icon.svg.import
+/default_bus_layout.tres
+/.editorconfig
+/CONTRIBUTING.md
+/docs/
+/tests/
+/tools/
+/dist/
+__pycache__/
