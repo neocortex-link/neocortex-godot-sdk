@@ -1,0 +1,326 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/usage_gating_sample.gd" id="1_caagj"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_character.gd" id="2_2n88p"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/neocortex_smart_agent.gd" id="3_fq84d"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/neocortex_face_animator.gd" id="4_awwbr"]
+[ext_resource type="Theme" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTheme.tres" id="5_8ik24"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_frame.gd" id="6_up538"]
+[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/dots.png" id="7_cq7sf"]
+[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/corner.png" id="8_h7mdw"]
+[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/logo.png" id="9_x2no8"]
+[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexChatPanel.tscn" id="10_xc1j0"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_chat_panel.gd" id="11_bk072"]
+[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTextChatInput.tscn" id="12_7608f"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_text_chat_input.gd" id="13_ifvns"]
+
+[sub_resource type="Environment" id="Environment_yakle"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.212, 0.227, 0.259, 1)
+ambient_light_energy = 1.6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twulb"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.91)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[node name="UsageGatingDemo" type="Node3D" unique_id=361393084 node_paths=PackedStringArray("agent", "text_input", "chat_panel", "log_label", "refresh_button", "new_session_button", "character")]
+script = ExtResource("1_caagj")
+agent = NodePath("Agent")
+text_input = NodePath("UI/Frame/TextChatInput")
+chat_panel = NodePath("UI/Frame/ChatPanel")
+log_label = NodePath("UI/Frame/UsageLog/Content/Log")
+refresh_button = NodePath("UI/Frame/RefreshButton")
+new_session_button = NodePath("UI/Frame/NewChatSessionButton")
+character = NodePath("Cora")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1968621082]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 1.5, 2)
+fov = 60.0
+
+[node name="DirectionalLight" type="DirectionalLight3D" parent="." unique_id=1448853652]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
+light_energy = 1.4
+directional_shadow_max_distance = 30.0
+
+[node name="Environment" type="WorldEnvironment" parent="." unique_id=278862148]
+environment = SubResource("Environment_yakle")
+
+[node name="Cora" type="Node3D" parent="." unique_id=1486639063]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0)
+script = ExtResource("2_2n88p")
+
+[node name="Agent" type="Node" parent="." unique_id=770150375 node_paths=PackedStringArray("audio_player", "body")]
+script = ExtResource("3_fq84d")
+chat_lines_mode = 2
+audio_player = NodePath("Voice")
+load_history_on_start = true
+auto_voice_input = false
+body = NodePath("../Cora")
+
+[node name="Voice" type="AudioStreamPlayer" parent="Agent" unique_id=1644607521]
+
+[node name="FaceAnimator" type="Node" parent="Agent" unique_id=674717165 node_paths=PackedStringArray("agent")]
+script = ExtResource("4_awwbr")
+agent = NodePath("..")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=795609102]
+
+[node name="Frame" type="Control" parent="UI" unique_id=1832464333]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+theme = ExtResource("5_8ik24")
+script = ExtResource("6_up538")
+
+[node name="Background" type="Control" parent="UI/Frame" unique_id=2103664542]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Dots" type="TextureRect" parent="UI/Frame/Background" unique_id=1513041134]
+modulate = Color(1, 1, 1, 0.1)
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("7_cq7sf")
+stretch_mode = 1
+
+[node name="LeftTop" type="TextureRect" parent="UI/Frame/Background" unique_id=24916411]
+modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 96.0
+offset_bottom = 96.0
+mouse_filter = 2
+texture = ExtResource("8_h7mdw")
+
+[node name="RightTop" type="TextureRect" parent="UI/Frame/Background" unique_id=1989586192]
+modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = 96.0
+mouse_filter = 2
+texture = ExtResource("8_h7mdw")
+flip_h = true
+
+[node name="LeftBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=819385800]
+modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -96.0
+offset_right = 96.0
+offset_bottom = -32.0
+mouse_filter = 2
+texture = ExtResource("8_h7mdw")
+flip_v = true
+
+[node name="RightBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=2047996580]
+modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -96.0
+offset_right = -32.0
+offset_bottom = -32.0
+mouse_filter = 2
+texture = ExtResource("8_h7mdw")
+flip_h = true
+flip_v = true
+
+[node name="Logo" type="TextureRect" parent="UI/Frame/Background" unique_id=1606864622]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+texture = ExtResource("9_x2no8")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="UI/Frame/Background" unique_id=1952840550]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 60.0
+offset_right = 544.0
+offset_bottom = 100.0
+theme_type_variation = &"NeocortexTitle"
+text = "NEOCORTEX"
+
+[node name="DemoName" type="Label" parent="UI/Frame/Background" unique_id=1346256373]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 100.0
+offset_right = 624.0
+offset_bottom = 128.0
+theme_type_variation = &"NeocortexSubtitle"
+text = "Godot SDK · Usage Gating Demo"
+
+[node name="Brief" type="Control" parent="UI/Frame" unique_id=1130122457]
+anchors_preset = 0
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -256.0
+offset_bottom = 256.0
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="UI/Frame/Brief" unique_id=377261366]
+layout_mode = 0
+anchor_right = 1.0
+offset_bottom = 32.0
+theme_type_variation = &"NeocortexHeading"
+text = "DEMO BRIEF"
+
+[node name="Separator" type="ColorRect" parent="UI/Frame/Brief" unique_id=1796386010]
+layout_mode = 0
+anchor_right = 1.0
+offset_top = 36.0
+offset_right = -64.0
+offset_bottom = 40.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.1)
+
+[node name="Body" type="RichTextLabel" parent="UI/Frame/Brief" unique_id=1863501472]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+offset_right = -64.0
+mouse_filter = 2
+bbcode_enabled = true
+text = "[b]This scene demonstrates the usage gating of Neocortex.[/b]
+
+[b][color=#F59E0B]01[/color][/b] In the Neocortex dashboard, set your per player and per day usage limits on the API key.
+[b][color=#F59E0B]02[/color][/b] Run the scene and start chatting.
+[b][color=#F59E0B]03[/color][/b] Watch the usage log on the left, and read the sample's code."
+fit_content = true
+scroll_active = false
+
+[node name="ChatPanel" type="ScrollContainer" parent="UI/Frame" unique_id=1435552477 instance=ExtResource("10_xc1j0")]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = -624.0
+offset_right = 384.0
+offset_bottom = -112.0
+theme = ExtResource("5_8ik24")
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("11_bk072")
+
+[node name="TextChatInput" type="HBoxContainer" parent="UI/Frame" unique_id=2123334061 instance=ExtResource("12_7608f")]
+custom_minimum_size = Vector2(320, 64)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = -96.0
+offset_right = 384.0
+offset_bottom = -32.0
+theme = ExtResource("5_8ik24")
+theme_override_constants/separation = 16
+script = ExtResource("13_ifvns")
+placeholder = "Say something to Cora..."
+
+[node name="UsageLog" type="Panel" parent="UI/Frame" unique_id=1507723569]
+layout_mode = 0
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = -240.0
+offset_right = 544.0
+offset_bottom = 320.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_twulb")
+
+[node name="Title" type="Label" parent="UI/Frame/UsageLog" unique_id=127914105]
+layout_mode = 0
+anchor_right = 1.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 56.0
+theme_type_variation = &"NeocortexHeading"
+text = "USAGE LOG"
+
+[node name="Separator" type="ColorRect" parent="UI/Frame/UsageLog" unique_id=537753464]
+layout_mode = 0
+anchor_right = 1.0
+offset_left = 24.0
+offset_top = 60.0
+offset_right = -88.0
+offset_bottom = 64.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.1)
+
+[node name="Content" type="VBoxContainer" parent="UI/Frame/UsageLog" unique_id=134237032]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 88.0
+offset_right = -24.0
+offset_bottom = -24.0
+theme_override_constants/separation = 12
+
+[node name="Log" type="RichTextLabel" parent="UI/Frame/UsageLog/Content" unique_id=2070395983]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/line_separation = 6
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 18
+bbcode_enabled = true
+scroll_following = true
+
+[node name="RefreshButton" type="Button" parent="UI/Frame" unique_id=491210789]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -592.0
+offset_top = 64.0
+offset_right = -336.0
+offset_bottom = 112.0
+text = "Refresh Limits"
+
+[node name="NewChatSessionButton" type="Button" parent="UI/Frame" unique_id=1082271070]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -320.0
+offset_top = 64.0
+offset_right = -64.0
+offset_bottom = 112.0
+text = "New Chat Session"

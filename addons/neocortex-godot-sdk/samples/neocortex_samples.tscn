@@ -1,0 +1,9 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_launcher.gd" id="1_06mom"]
+
+[node name="NeocortexSamples" type="Control" unique_id=1505993522]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_06mom")

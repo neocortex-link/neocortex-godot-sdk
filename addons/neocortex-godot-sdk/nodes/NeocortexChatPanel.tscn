@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://hikrbbj2768m"]
+
+[ext_resource type="Script" uid="uid://bjy8qjplnsk0a" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_chat_panel.gd" id="1_sou0f"]
+[ext_resource type="Theme" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTheme.tres" id="2_theme"]
+
+[node name="ScrollContainer" type="ScrollContainer" unique_id=1435552477]
+custom_minimum_size = Vector2(256, 256)
+offset_right = 512.0
+offset_bottom = 512.0
+theme = ExtResource("2_theme")
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("1_sou0f")
+
+[node name="Messages" type="VBoxContainer" parent="." unique_id=10835611]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+alignment = 2
