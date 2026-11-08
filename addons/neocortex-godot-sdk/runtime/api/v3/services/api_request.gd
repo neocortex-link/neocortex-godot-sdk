@@ -27,7 +27,7 @@ const QUIZ_BUSY_RETRIES := 2
 const QUIZ_BUSY_RETRY_DELAY := 1.5
 
 ## Point every request at another server, for example your own proxy.
-## Takes precedence over the dock's developer setting. Empty uses the public API.
+## Empty uses the public API.
 static var base_url_override: String = ""
 
 ## False once a server has answered 404 for streamed speech; it will not grow the
@@ -65,8 +65,6 @@ var perception_self_name: String = ""
 ## The base URL requests go to, without a trailing slash.
 static func get_base_url() -> String:
 	var url := base_url_override.strip_edges()
-	if url.is_empty() and OS.has_feature("editor"):
-		url = NeocortexSettings.get_settings().base_url_override.strip_edges()
 	if url.is_empty():
 		url = DEFAULT_BASE_URL
 	return url.trim_suffix("/")

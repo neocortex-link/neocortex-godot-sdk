@@ -4,8 +4,7 @@ extends RefCounted
 ## The Neocortex editor tooling, started by plugin.gd once the addon is in place:
 ## - the Neocortex dock and the Settings window (Project > Tools > Neocortex > Settings),
 ##   which opens by itself the first time a project has no API key
-## - Project > Tools > Neocortex: complete chat rigs and single widgets (and, in the SDK's
-##   own repository only, the local server switch)
+## - Project > Tools > Neocortex: complete chat rigs and single widgets
 ## - inspector help and pickers on the Neocortex nodes
 ## - Debugger > Neocortex: live microphone levels and agent state while the game runs
 
@@ -16,9 +15,8 @@ const SettingsWindow := preload("res://addons/neocortex-godot-sdk/editor/neocort
 
 const MENU := "Neocortex"
 const SHOWN_KEY := "settings_window_shown"
-const LOCAL_SERVER_URL := "http://localhost:3000/api/v3"
 
-enum Item { SETTINGS, TEXT_CHAT, VOICE_CHAT, CHAT_PANEL, TEXT_INPUT, AUDIO_INPUT, MIC_DROPDOWN, THINKING, LOCAL_SERVER, SAMPLES, DOCS }
+enum Item { SETTINGS, TEXT_CHAT, VOICE_CHAT, CHAT_PANEL, TEXT_INPUT, AUDIO_INPUT, MIC_DROPDOWN, THINKING, SAMPLES, DOCS }
 
 const WIDGETS := {
 	Item.CHAT_PANEL: ["ChatPanel", "res://addons/neocortex-godot-sdk/nodes/NeocortexChatPanel.tscn"],
@@ -64,14 +62,10 @@ func enter() -> void:
 	_menu.add_item("Audio Chat Input", Item.AUDIO_INPUT)
 	_menu.add_item("Microphone Dropdown", Item.MIC_DROPDOWN)
 	_menu.add_item("Thinking Indicator", Item.THINKING)
-	if _dock.developer_tools_enabled():
-		_menu.add_separator("Developer")
-		_menu.add_check_item("Use Local Server", Item.LOCAL_SERVER)
 	_menu.add_separator()
 	_menu.add_item("Open Samples", Item.SAMPLES)
 	_menu.add_item("Documentation", Item.DOCS)
 	_menu.id_pressed.connect(_on_menu)
-	_menu.about_to_popup.connect(_sync_menu)
 	_plugin.add_tool_submenu_item(MENU, _menu)
 
 	_ensure_audio_input()
@@ -116,11 +110,6 @@ func _first_run() -> void:
 	if NeocortexSettings.get_settings().api_key.strip_edges().is_empty():
 		open_settings()
 
-func _sync_menu() -> void:
-	var index := _menu.get_item_index(Item.LOCAL_SERVER)
-	if index >= 0:
-		_menu.set_item_checked(index, NeocortexSettings.get_settings().base_url_override == LOCAL_SERVER_URL)
-
 func _on_menu(id: int) -> void:
 	match id:
 		Item.SETTINGS:
@@ -129,12 +118,6 @@ func _on_menu(id: int) -> void:
 			_scaffold(false)
 		Item.VOICE_CHAT:
 			_scaffold(true)
-		Item.LOCAL_SERVER:
-			var settings := NeocortexSettings.get_settings()
-			settings.base_url_override = "" if settings.base_url_override == LOCAL_SERVER_URL else LOCAL_SERVER_URL
-			settings.save_settings()
-			_dock.reload()
-			print("[Neocortex] Requests from the editor go to %s" % ApiRequest.get_base_url())
 		Item.SAMPLES:
 			_plugin.get_editor_interface().open_scene_from_path("res://addons/neocortex-godot-sdk/samples/neocortex_samples.tscn")
 		Item.DOCS:
