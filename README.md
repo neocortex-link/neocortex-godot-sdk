@@ -6,7 +6,7 @@ Version 0.2.0, for Godot 4.7 or later.
 
 ## Install
 
-1. Download `neocortex-godot-sdk-<version>.zip` from the releases and unzip it into your project. It adds `addons/neocortex-godot-sdk`.
+1. Download the [latest release](https://github.com/neocortex-link/neocortex-godot-sdk/releases/latest) (Source code, zip) and copy its `addons/neocortex-godot-sdk` folder into your project's `addons` folder, creating `addons` if you don't have one. The addon must end up at `res://addons/neocortex-godot-sdk/`; anywhere else, the plugin tells you to move it.
 2. Project > Project Settings > Plugins: enable **Neocortex**.
 3. For voice input: Project Settings > Audio > Driver > **Enable Input**.
 4. In the **Neocortex** dock (next to the Inspector), paste your API key and press Save. Get a key at [neocortex.link/dashboard/api-keys](https://neocortex.link/dashboard/api-keys).
