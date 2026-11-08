@@ -1,10 +1,11 @@
 extends Control
 
 ## Lists the samples as cards and opens the one you pick. Each sample has a Back
-## button (Escape) to return here. The dropdown at the top right picks the character
-## every sample uses (NeocortexSampleCharacterPicker).
+## button (Escape) to return here. The dropdowns above the cards pick the character,
+## the quiz question set and the microphone every sample uses.
 
 const DIR := "res://addons/neocortex-godot-sdk/samples/"
+const MICROPHONE := preload("res://addons/neocortex-godot-sdk/nodes/NeocortexMicrophoneDropdown.tscn")
 const SAMPLES := [
 	["1_text_chat_demo", "Text Chat", "Type to Cora; each line drops in and is voiced in its own emotion."],
 	["2_audio_chat_demo", "Audio Chat", "Talk through the microphone, with voice detection or push to talk."],
@@ -19,13 +20,20 @@ func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var frame := NeocortexSampleFrame.create(self, null, "Godot SDK · Samples", true)
 
-	var caption := NeocortexSampleFrame.label(frame, null, "CharacterCaption", "Character for every sample", "NeocortexSubtitle")
-	caption.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	NeocortexSampleFrame.place(caption, Vector2(1, 0), Vector2(1, 0), Vector2(-600, 74), Vector2(320, 28))
-	var picker := NeocortexSampleCharacterPicker.new()
-	picker.name = "CharacterPicker"
-	frame.add_child(picker)
-	NeocortexSampleFrame.place(picker, Vector2(1, 0), Vector2(1, 0), Vector2(-64, 64), Vector2(512, 48))
+	# What every sample uses: a character, the quiz's question set, the microphone.
+	var choices := HBoxContainer.new()
+	choices.name = "Choices"
+	choices.add_theme_constant_override("separation", 36)
+	frame.add_child(choices)
+	NeocortexSampleFrame.place(choices, Vector2(0.5, 0), Vector2(0.5, 0), Vector2(0, 150), Vector2(1608, 80))
+	var character := NeocortexSampleCharacterPicker.new()
+	character.name = "CharacterPicker"
+	_choice(choices, "CHARACTER", character)
+	var question_set := NeocortexSampleCharacterPicker.new()
+	question_set.name = "QuestionSetPicker"
+	question_set.kind = NeocortexSampleCharacterPicker.Kind.QUESTION_SETS
+	_choice(choices, "QUESTION SET (QUIZ SHOW)", question_set)
+	_choice(choices, "MICROPHONE", MICROPHONE.instantiate())
 
 	# Three cards a row, the last row centred.
 	var grid := HFlowContainer.new()
@@ -43,6 +51,17 @@ func _ready() -> void:
 		warning.add_theme_color_override("font_color", Color("#EE6B6B"))
 		warning.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		NeocortexSampleFrame.place(warning, Vector2(0.5, 1), Vector2(0.5, 1), Vector2(0, -64), Vector2(800, 32))
+
+## A caption over a dropdown, one column of the choices row.
+func _choice(row: HBoxContainer, caption: String, dropdown: Control) -> void:
+	var column := VBoxContainer.new()
+	column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	column.add_theme_constant_override("separation", 6)
+	row.add_child(column)
+	var label := NeocortexSampleFrame.label(column, null, "Caption", caption, "NeocortexHeading")
+	label.add_theme_font_size_override("font_size", 18)
+	dropdown.custom_minimum_size = Vector2(0, 48)
+	column.add_child(dropdown)
 
 func _card(number: int, sample: Array) -> Button:
 	var card := Button.new()
