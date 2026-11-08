@@ -15,7 +15,7 @@ Your key is saved in `addons/neocortex-godot-sdk/neocortex_settings.tres`. Add t
 
 ## Try the samples
 
-Run `addons/neocortex-godot-sdk/samples/neocortex_samples.tscn`. Pick a character from the dropdown at the top right; every sample then talks to it.
+Run `addons/neocortex-godot-sdk/samples/neocortex_samples.tscn`. Above the samples, pick your character, the question set for the Quiz Show, and your microphone; every sample uses them.
 
 1. **Text Chat**: type to a character; each line is voiced in its own emotion.
 2. **Audio Chat**: talk through the microphone, with voice detection or push to talk.
