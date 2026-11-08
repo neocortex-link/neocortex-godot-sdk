@@ -14,11 +14,6 @@ const LEGACY_CONFIG_PATH := "res://addons/neocortex-godot-sdk/data.cfg"
 
 @export var api_key: String = ""
 
-## Send every request to this server instead of the public API. Only honoured when the
-## game runs from the editor, so a forgotten value can never ship in an export. Leave
-## empty normally.
-@export var base_url_override: String = ""
-
 static var _cached: NeocortexSettings = null
 
 ## The project's settings, loaded once and cached. Never null.

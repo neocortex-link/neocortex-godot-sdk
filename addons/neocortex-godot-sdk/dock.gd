@@ -2,16 +2,11 @@
 extends ScrollContainer
 
 ## The Neocortex dock: API key, account status, the team's characters and question sets,
-## in compact cards drawn with the editor's own theme. The developer server switch is
-## for the SDK's maintainers: it only shows in a project that has DEVELOPER_FILE, which
-## releases leave out.
+## in compact cards drawn with the editor's own theme.
 
 const DASHBOARD_KEYS_URL := "https://neocortex.link/dashboard/api-keys"
 const DASHBOARD_CHARACTERS_URL := "https://neocortex.link/dashboard/characters"
 const DASHBOARD_QUESTION_SETS_URL := "https://neocortex.link/dashboard/modules/quiz/sets"
-const LOCAL_SERVER_URL := "http://localhost:3000/api/v3"
-## Present only in the SDK's own repository (tools/ is not part of a release).
-const DEVELOPER_FILE := "res://tools/developer_tools.txt"
 const LOGO := preload("res://addons/neocortex-godot-sdk/images/ui/neocortex_logo.png")
 const ACCENT := Color("#F59E0B")
 const GOOD := Color("#5CC98F")
@@ -36,8 +31,6 @@ var _characters: VBoxContainer
 var _question_sets: VBoxContainer
 var _character_count: Label
 var _question_set_count: Label
-var _server: LineEdit
-var _developer: FoldableContainer
 var _refresh_button: Button
 
 func _ready() -> void:
@@ -121,43 +114,6 @@ func _build() -> void:
 	_question_sets.add_theme_constant_override("separation", 2)
 	sets_card.add_child(_question_sets)
 
-	if developer_tools_enabled():
-		_build_developer(root)
-
-## True in the SDK's own repository, where the developer server switch is shown.
-static func developer_tools_enabled() -> bool:
-	return FileAccess.file_exists(DEVELOPER_FILE)
-
-# Developer server, folded away.
-func _build_developer(root: VBoxContainer) -> void:
-	var developer := FoldableContainer.new()
-	developer.folded = _settings.base_url_override.is_empty()
-	root.add_child(developer)
-	_developer = developer
-	var dev := VBoxContainer.new()
-	dev.add_theme_constant_override("separation", 4)
-	developer.add_child(dev)
-	var hint := _muted("Requests from games run in the editor go here. Exported games always use the public API.")
-	hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	dev.add_child(hint)
-	var server_row := HBoxContainer.new()
-	server_row.add_theme_constant_override("separation", 4)
-	dev.add_child(server_row)
-	_server = LineEdit.new()
-	_server.placeholder_text = ApiRequest.DEFAULT_BASE_URL
-	_server.text = _settings.base_url_override
-	_server.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_server.text_submitted.connect(func(text: String): _save_server(text))
-	_style_field(_server)
-	server_row.add_child(_server)
-	server_row.add_child(_button("Apply", func(): _save_server(_server.text)))
-	var presets := HBoxContainer.new()
-	presets.add_theme_constant_override("separation", 4)
-	dev.add_child(presets)
-	presets.add_child(_button("Local server", func(): _save_server(LOCAL_SERVER_URL)))
-	presets.add_child(_button("Production", func(): _save_server("")))
-	_show_server()
-
 ## Shows the saved settings again and refreshes the account (the settings window and
 ## the dock share one settings resource).
 func reload() -> void:
@@ -165,9 +121,6 @@ func reload() -> void:
 		return
 	_settings = NeocortexSettings.get_settings()
 	_api_key.text = _settings.api_key
-	if _server != null:
-		_server.text = _settings.base_url_override
-		_show_server()
 	_refresh()
 
 # ------------------------------------------------------------------
@@ -178,18 +131,6 @@ func _save_key() -> void:
 	_settings.api_key = _api_key.text.strip_edges()
 	_persist()
 	_refresh()
-
-func _save_server(url: String) -> void:
-	_settings.base_url_override = url.strip_edges().trim_suffix("/")
-	_server.text = _settings.base_url_override
-	_persist()
-	_show_server()
-	_refresh()
-
-func _show_server() -> void:
-	var url := _settings.base_url_override
-	_developer.title = "Developer" if url.is_empty() else "Developer (custom server)"
-	_developer.tooltip_text = ApiRequest.get_base_url()
 
 func _persist() -> void:
 	var error := _settings.save_settings()
