@@ -74,6 +74,7 @@ func enter() -> void:
 	_menu.about_to_popup.connect(_sync_menu)
 	_plugin.add_tool_submenu_item(MENU, _menu)
 
+	_ensure_audio_input()
 	_first_run.call_deferred()
 
 func exit() -> void:
@@ -99,6 +100,14 @@ func open_settings() -> void:
 		_window.open()
 
 # The Settings window opens once per project when there is no key yet.
+# Voice needs the engine's audio input, which Godot leaves off in a new project.
+func _ensure_audio_input() -> void:
+	if ProjectSettings.get_setting("audio/driver/enable_input", false):
+		return
+	ProjectSettings.set_setting("audio/driver/enable_input", true)
+	ProjectSettings.save()
+	print("[Neocortex] Turned on Project Settings > Audio > Driver > Enable Input, so the microphone works.")
+
 func _first_run() -> void:
 	var editor_settings := _plugin.get_editor_interface().get_editor_settings()
 	if editor_settings.get_project_metadata(MENU, SHOWN_KEY, false):

@@ -61,14 +61,14 @@ func start_microphone() -> void:
 	if _listening:
 		return
 	if not ProjectSettings.get_setting("audio/driver/enable_input", false):
-		recording_failed.emit("Enable Project Settings > Audio > Driver > Enable Input to use the microphone.")
+		_fail("Enable Project Settings > Audio > Driver > Enable Input to use the microphone.")
 		return
 	if not NeocortexMicrophone.request_permission():
 		permission_denied.emit()
-		recording_failed.emit("Microphone permission has not been granted.")
+		_fail("Microphone permission has not been granted.")
 		return
 	if not _resolve_bus_effects():
-		recording_failed.emit("Could not set up the microphone recording bus.")
+		_fail("Could not set up the microphone recording bus.")
 		return
 
 	NeocortexMicrophone.apply_selected_device()
@@ -90,6 +90,12 @@ func start_microphone() -> void:
 	_speech_seconds = 0.0
 	_recorded_seconds = 0.0
 	_listening = true
+
+# A microphone that cannot start says why in the Output panel, as well as through
+# recording_failed.
+func _fail(message: String) -> void:
+	push_error("[Neocortex] " + message)
+	recording_failed.emit(message)
 
 func stop_microphone() -> void:
 	_close(true)
