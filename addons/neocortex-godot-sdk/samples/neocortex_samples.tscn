@@ -1,9 +1,1016 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_launcher.gd" id="1_06mom"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_launcher.gd" id="1_c3y87"]
+[ext_resource type="Theme" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTheme.tres" id="2_ciudx"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_frame.gd" id="3_stjlp"]
+[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/dots.png" id="4_rj5p3"]
+[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/corner.png" id="5_bjb88"]
+[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/logo.png" id="6_d72vx"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_character_picker.gd" id="7_ei03x"]
+[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexMicrophoneDropdown.tscn" id="8_4ktt5"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_microphone_dropdown.gd" id="9_5yapn"]
 
-[node name="NeocortexSamples" type="Control" unique_id=1505993522]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ywo6s"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.91)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fr3g3"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.61960787, 0.043137256, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wicv1"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.94509804, 0.60784316, 0.043137256, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xkcqp"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.61960787, 0.043137256, 0.6)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oy3ro"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.91)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7nhdc"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.61960787, 0.043137256, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tq23w"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.94509804, 0.60784316, 0.043137256, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8agx"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.61960787, 0.043137256, 0.6)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ay2t5"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.91)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_olb3d"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.61960787, 0.043137256, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e2e6m"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.94509804, 0.60784316, 0.043137256, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pol2a"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.61960787, 0.043137256, 0.6)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c1m23"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.91)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edx4x"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.61960787, 0.043137256, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwfw7"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.94509804, 0.60784316, 0.043137256, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3pwn"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.61960787, 0.043137256, 0.6)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hj5l"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.91)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylncm"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.61960787, 0.043137256, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1shf"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.94509804, 0.60784316, 0.043137256, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_an23w"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.61960787, 0.043137256, 0.6)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l41rj"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.91)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5oim1"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.61960787, 0.043137256, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4qk1"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.94509804, 0.60784316, 0.043137256, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6s0rs"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.61960787, 0.043137256, 0.6)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0jq44"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.91)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.08)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uk6im"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.61960787, 0.043137256, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xqnh"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.078431375, 0.078431375, 0.078431375, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.94509804, 0.60784316, 0.043137256, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmvge"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9607843, 0.61960787, 0.043137256, 0.6)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 12
+
+[node name="NeocortexSamples" type="Control" unique_id=1466441935 node_paths=PackedStringArray("samples", "no_key_warning")]
 layout_mode = 3
 anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
 mouse_filter = 2
-script = ExtResource("1_06mom")
+script = ExtResource("1_c3y87")
+samples = NodePath("UI/Frame/Samples")
+no_key_warning = NodePath("UI/Frame/NoKeyWarning")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1432999775]
+
+[node name="Frame" type="Control" parent="UI" unique_id=1346987324]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+theme = ExtResource("2_ciudx")
+script = ExtResource("3_stjlp")
+
+[node name="Background" type="Control" parent="UI/Frame" unique_id=1695829909]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Black" type="ColorRect" parent="UI/Frame/Background" unique_id=1397168739]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Dots" type="TextureRect" parent="UI/Frame/Background" unique_id=887573591]
+modulate = Color(1, 1, 1, 0.1)
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("4_rj5p3")
+stretch_mode = 1
+
+[node name="LeftTop" type="TextureRect" parent="UI/Frame/Background" unique_id=1979655974]
+modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 96.0
+offset_bottom = 96.0
+mouse_filter = 2
+texture = ExtResource("5_bjb88")
+
+[node name="RightTop" type="TextureRect" parent="UI/Frame/Background" unique_id=1586191399]
+modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = 96.0
+mouse_filter = 2
+texture = ExtResource("5_bjb88")
+flip_h = true
+
+[node name="LeftBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=519359997]
+modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -96.0
+offset_right = 96.0
+offset_bottom = -32.0
+mouse_filter = 2
+texture = ExtResource("5_bjb88")
+flip_v = true
+
+[node name="RightBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=285239277]
+modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -96.0
+offset_right = -32.0
+offset_bottom = -32.0
+mouse_filter = 2
+texture = ExtResource("5_bjb88")
+flip_h = true
+flip_v = true
+
+[node name="Logo" type="TextureRect" parent="UI/Frame/Background" unique_id=288068388]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_filter = 2
+texture = ExtResource("6_d72vx")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="UI/Frame/Background" unique_id=106605370]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 60.0
+offset_right = 544.0
+offset_bottom = 100.0
+theme_type_variation = &"NeocortexTitle"
+text = "NEOCORTEX"
+
+[node name="DemoName" type="Label" parent="UI/Frame/Background" unique_id=1872805583]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 100.0
+offset_right = 624.0
+offset_bottom = 128.0
+theme_type_variation = &"NeocortexSubtitle"
+text = "Godot SDK · Samples"
+
+[node name="Choices" type="HBoxContainer" parent="UI/Frame" unique_id=1651724754]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -804.0
+offset_top = 150.0
+offset_right = 804.0
+offset_bottom = 230.0
+theme_override_constants/separation = 36
+
+[node name="CharacterPickerColumn" type="VBoxContainer" parent="UI/Frame/Choices" unique_id=665561431]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="Caption" type="Label" parent="UI/Frame/Choices/CharacterPickerColumn" unique_id=31079613]
+layout_mode = 2
+theme_type_variation = &"NeocortexHeading"
+theme_override_font_sizes/font_size = 18
+text = "CHARACTER"
+
+[node name="CharacterPicker" type="OptionButton" parent="UI/Frame/Choices/CharacterPickerColumn" unique_id=304849809]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "Your characters"
+popup/item_0/id = 0
+script = ExtResource("7_ei03x")
+
+[node name="QuestionSetPickerColumn" type="VBoxContainer" parent="UI/Frame/Choices" unique_id=725197080]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="Caption" type="Label" parent="UI/Frame/Choices/QuestionSetPickerColumn" unique_id=403119056]
+layout_mode = 2
+theme_type_variation = &"NeocortexHeading"
+theme_override_font_sizes/font_size = 18
+text = "QUESTION SET (QUIZ SHOW)"
+
+[node name="QuestionSetPicker" type="OptionButton" parent="UI/Frame/Choices/QuestionSetPickerColumn" unique_id=283696256]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "Your question sets"
+popup/item_0/id = 0
+script = ExtResource("7_ei03x")
+kind = 1
+
+[node name="MicrophonePickerColumn" type="VBoxContainer" parent="UI/Frame/Choices" unique_id=520282303]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="Caption" type="Label" parent="UI/Frame/Choices/MicrophonePickerColumn" unique_id=1788865946]
+layout_mode = 2
+theme_type_variation = &"NeocortexHeading"
+theme_override_font_sizes/font_size = 18
+text = "MICROPHONE"
+
+[node name="MicrophonePicker" type="OptionButton" parent="UI/Frame/Choices/MicrophonePickerColumn" unique_id=2052431151 instance=ExtResource("8_4ktt5")]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+tooltip_text = "Microphone"
+theme = ExtResource("2_ciudx")
+clip_text = true
+selected = 0
+fit_to_longest_item = false
+item_count = 1
+popup/item_0/text = "Your microphones"
+popup/item_0/id = 0
+script = ExtResource("9_5yapn")
+
+[node name="Samples" type="HFlowContainer" parent="UI/Frame" unique_id=10992184]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -804.0
+offset_top = -276.0
+offset_right = 804.0
+offset_bottom = 372.0
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 24
+alignment = 1
+
+[node name="1_text_chat_demo" type="Button" parent="UI/Frame/Samples" unique_id=1979954310]
+custom_minimum_size = Vector2(520, 200)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ywo6s")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fr3g3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wicv1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_xkcqp")
+
+[node name="Column" type="VBoxContainer" parent="UI/Frame/Samples/1_text_chat_demo" unique_id=584555810]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 28.0
+offset_right = -32.0
+offset_bottom = -24.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Heading" type="HBoxContainer" parent="UI/Frame/Samples/1_text_chat_demo/Column" unique_id=228674094]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Number" type="Label" parent="UI/Frame/Samples/1_text_chat_demo/Column/Heading" unique_id=1025395417]
+layout_mode = 2
+theme_type_variation = &"NeocortexHeading"
+theme_override_font_sizes/font_size = 28
+text = "01"
+
+[node name="Title" type="Label" parent="UI/Frame/Samples/1_text_chat_demo/Column/Heading" unique_id=233721424]
+layout_mode = 2
+theme_type_variation = &"NeocortexTitle"
+theme_override_font_sizes/font_size = 28
+text = "Text Chat"
+
+[node name="About" type="Label" parent="UI/Frame/Samples/1_text_chat_demo/Column" unique_id=1943564532]
+layout_mode = 2
+theme_type_variation = &"NeocortexBody"
+theme_override_font_sizes/font_size = 21
+text = "Type to Cora; each line drops in and is voiced in its own emotion."
+autowrap_mode = 3
+
+[node name="2_audio_chat_demo" type="Button" parent="UI/Frame/Samples" unique_id=2143805014]
+custom_minimum_size = Vector2(520, 200)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_oy3ro")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7nhdc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tq23w")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u8agx")
+
+[node name="Column" type="VBoxContainer" parent="UI/Frame/Samples/2_audio_chat_demo" unique_id=1913123515]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 28.0
+offset_right = -32.0
+offset_bottom = -24.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Heading" type="HBoxContainer" parent="UI/Frame/Samples/2_audio_chat_demo/Column" unique_id=2122125340]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Number" type="Label" parent="UI/Frame/Samples/2_audio_chat_demo/Column/Heading" unique_id=943234356]
+layout_mode = 2
+theme_type_variation = &"NeocortexHeading"
+theme_override_font_sizes/font_size = 28
+text = "02"
+
+[node name="Title" type="Label" parent="UI/Frame/Samples/2_audio_chat_demo/Column/Heading" unique_id=689640504]
+layout_mode = 2
+theme_type_variation = &"NeocortexTitle"
+theme_override_font_sizes/font_size = 28
+text = "Audio Chat"
+
+[node name="About" type="Label" parent="UI/Frame/Samples/2_audio_chat_demo/Column" unique_id=729796431]
+layout_mode = 2
+theme_type_variation = &"NeocortexBody"
+theme_override_font_sizes/font_size = 21
+text = "Talk through the microphone, with voice detection or push to talk."
+autowrap_mode = 3
+
+[node name="3_actions_demo" type="Button" parent="UI/Frame/Samples" unique_id=1947794203]
+custom_minimum_size = Vector2(520, 200)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ay2t5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_olb3d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_e2e6m")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pol2a")
+
+[node name="Column" type="VBoxContainer" parent="UI/Frame/Samples/3_actions_demo" unique_id=625769267]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 28.0
+offset_right = -32.0
+offset_bottom = -24.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Heading" type="HBoxContainer" parent="UI/Frame/Samples/3_actions_demo/Column" unique_id=1707684963]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Number" type="Label" parent="UI/Frame/Samples/3_actions_demo/Column/Heading" unique_id=55403824]
+layout_mode = 2
+theme_type_variation = &"NeocortexHeading"
+theme_override_font_sizes/font_size = 28
+text = "03"
+
+[node name="Title" type="Label" parent="UI/Frame/Samples/3_actions_demo/Column/Heading" unique_id=1094536670]
+layout_mode = 2
+theme_type_variation = &"NeocortexTitle"
+theme_override_font_sizes/font_size = 28
+text = "Actions"
+
+[node name="About" type="Label" parent="UI/Frame/Samples/3_actions_demo/Column" unique_id=1585433585]
+layout_mode = 2
+theme_type_variation = &"NeocortexBody"
+theme_override_font_sizes/font_size = 21
+text = "Ask Cora to dance or jump; stacked actions run in order."
+autowrap_mode = 3
+
+[node name="4_interactables_demo" type="Button" parent="UI/Frame/Samples" unique_id=1665439134]
+custom_minimum_size = Vector2(520, 200)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_c1m23")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_edx4x")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dwfw7")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u3pwn")
+
+[node name="Column" type="VBoxContainer" parent="UI/Frame/Samples/4_interactables_demo" unique_id=621340332]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 28.0
+offset_right = -32.0
+offset_bottom = -24.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Heading" type="HBoxContainer" parent="UI/Frame/Samples/4_interactables_demo/Column" unique_id=1294618403]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Number" type="Label" parent="UI/Frame/Samples/4_interactables_demo/Column/Heading" unique_id=213453269]
+layout_mode = 2
+theme_type_variation = &"NeocortexHeading"
+theme_override_font_sizes/font_size = 28
+text = "04"
+
+[node name="Title" type="Label" parent="UI/Frame/Samples/4_interactables_demo/Column/Heading" unique_id=1687984958]
+layout_mode = 2
+theme_type_variation = &"NeocortexTitle"
+theme_override_font_sizes/font_size = 28
+text = "Interactables"
+
+[node name="About" type="Label" parent="UI/Frame/Samples/4_interactables_demo/Column" unique_id=650903994]
+layout_mode = 2
+theme_type_variation = &"NeocortexBody"
+theme_override_font_sizes/font_size = 21
+text = "Cora perceives the shapes on the floor and walks to them."
+autowrap_mode = 3
+
+[node name="5_group_chat_demo" type="Button" parent="UI/Frame/Samples" unique_id=1608664858]
+custom_minimum_size = Vector2(520, 200)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_4hj5l")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ylncm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m1shf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_an23w")
+
+[node name="Column" type="VBoxContainer" parent="UI/Frame/Samples/5_group_chat_demo" unique_id=584910923]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 28.0
+offset_right = -32.0
+offset_bottom = -24.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Heading" type="HBoxContainer" parent="UI/Frame/Samples/5_group_chat_demo/Column" unique_id=2138256957]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Number" type="Label" parent="UI/Frame/Samples/5_group_chat_demo/Column/Heading" unique_id=1005414807]
+layout_mode = 2
+theme_type_variation = &"NeocortexHeading"
+theme_override_font_sizes/font_size = 28
+text = "05"
+
+[node name="Title" type="Label" parent="UI/Frame/Samples/5_group_chat_demo/Column/Heading" unique_id=1269586301]
+layout_mode = 2
+theme_type_variation = &"NeocortexTitle"
+theme_override_font_sizes/font_size = 28
+text = "Group Chat"
+
+[node name="About" type="Label" parent="UI/Frame/Samples/5_group_chat_demo/Column" unique_id=268171702]
+layout_mode = 2
+theme_type_variation = &"NeocortexBody"
+theme_override_font_sizes/font_size = 21
+text = "Three characters, one conversation, a live roster. Pro or Team key."
+autowrap_mode = 3
+
+[node name="6_usage_gating_demo" type="Button" parent="UI/Frame/Samples" unique_id=1894775750]
+custom_minimum_size = Vector2(520, 200)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_l41rj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5oim1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q4qk1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6s0rs")
+
+[node name="Column" type="VBoxContainer" parent="UI/Frame/Samples/6_usage_gating_demo" unique_id=1644027369]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 28.0
+offset_right = -32.0
+offset_bottom = -24.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Heading" type="HBoxContainer" parent="UI/Frame/Samples/6_usage_gating_demo/Column" unique_id=912097807]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Number" type="Label" parent="UI/Frame/Samples/6_usage_gating_demo/Column/Heading" unique_id=1499522034]
+layout_mode = 2
+theme_type_variation = &"NeocortexHeading"
+theme_override_font_sizes/font_size = 28
+text = "06"
+
+[node name="Title" type="Label" parent="UI/Frame/Samples/6_usage_gating_demo/Column/Heading" unique_id=175308775]
+layout_mode = 2
+theme_type_variation = &"NeocortexTitle"
+theme_override_font_sizes/font_size = 28
+text = "Usage Gating"
+
+[node name="About" type="Label" parent="UI/Frame/Samples/6_usage_gating_demo/Column" unique_id=933273477]
+layout_mode = 2
+theme_type_variation = &"NeocortexBody"
+theme_override_font_sizes/font_size = 21
+text = "Check credits and caps before every message."
+autowrap_mode = 3
+
+[node name="7_quiz_show_demo" type="Button" parent="UI/Frame/Samples" unique_id=1294997446]
+custom_minimum_size = Vector2(520, 200)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0jq44")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_uk6im")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8xqnh")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wmvge")
+
+[node name="Column" type="VBoxContainer" parent="UI/Frame/Samples/7_quiz_show_demo" unique_id=650219758]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 28.0
+offset_right = -32.0
+offset_bottom = -24.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="Heading" type="HBoxContainer" parent="UI/Frame/Samples/7_quiz_show_demo/Column" unique_id=1799274224]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Number" type="Label" parent="UI/Frame/Samples/7_quiz_show_demo/Column/Heading" unique_id=249648361]
+layout_mode = 2
+theme_type_variation = &"NeocortexHeading"
+theme_override_font_sizes/font_size = 28
+text = "07"
+
+[node name="Title" type="Label" parent="UI/Frame/Samples/7_quiz_show_demo/Column/Heading" unique_id=1004062204]
+layout_mode = 2
+theme_type_variation = &"NeocortexTitle"
+theme_override_font_sizes/font_size = 28
+text = "Quiz Show"
+
+[node name="About" type="Label" parent="UI/Frame/Samples/7_quiz_show_demo/Column" unique_id=1962160325]
+layout_mode = 2
+theme_type_variation = &"NeocortexBody"
+theme_override_font_sizes/font_size = 21
+text = "Cora hosts a quiz for one to four players."
+autowrap_mode = 3
+
+[node name="NoKeyWarning" type="Label" parent="UI/Frame" unique_id=77164798]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -96.0
+offset_right = 400.0
+offset_bottom = -64.0
+theme_type_variation = &"NeocortexHeading"
+theme_override_colors/font_color = Color(0.93333334, 0.41960785, 0.41960785, 1)
+text = "Add your API key in the Neocortex dock first."
+horizontal_alignment = 1

@@ -1,63 +1,63 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bqgf5papo6q8n"]
 
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/interactable_sample.gd" id="1_tis3d"]
-[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/checker.png" id="2_m5j04"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_character.gd" id="3_wq4fg"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/neocortex_interactable.gd" id="4_oe6y0"]
-[ext_resource type="Theme" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTheme.tres" id="5_5ka31"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_frame.gd" id="6_r4c3r"]
-[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/dots.png" id="7_nbivk"]
-[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/corner.png" id="8_tu14i"]
-[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/logo.png" id="9_ydqrk"]
-[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexChatPanel.tscn" id="10_gx7k4"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_chat_panel.gd" id="11_sslcr"]
-[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTextChatInput.tscn" id="12_v5xxf"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_text_chat_input.gd" id="13_vhsfm"]
-[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexAudioChatInput.tscn" id="14_qf2p3"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_audio_chat_input.gd" id="15_oorxx"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_chat_ui.gd" id="16_i1ya1"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/neocortex_smart_agent.gd" id="17_5e5e7"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/audio/neocortex_audio_receiver.gd" id="18_tiaae"]
+[ext_resource type="Script" uid="uid://bgy3k6thbga0u" path="res://addons/neocortex-godot-sdk/samples/scripts/interactable_sample.gd" id="1_oe6y0"]
+[ext_resource type="Texture2D" uid="uid://406d08ss7k7o" path="res://addons/neocortex-godot-sdk/samples/visuals/checker.png" id="2_5ka31"]
+[ext_resource type="Script" uid="uid://b36j4mthxee0r" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_character.gd" id="3_r4c3r"]
+[ext_resource type="PackedScene" uid="uid://d2dvgmrhciujo" path="res://addons/neocortex-godot-sdk/samples/cora/cora.fbx" id="4_nbivk"]
+[ext_resource type="AnimationLibrary" path="res://addons/neocortex-godot-sdk/samples/cora/cora_animations.res" id="5_tu14i"]
+[ext_resource type="Script" uid="uid://dyg25n15q4mvl" path="res://addons/neocortex-godot-sdk/runtime/neocortex_interactable.gd" id="6_ydqrk"]
+[ext_resource type="Theme" uid="uid://bgwwg5703xat5" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTheme.tres" id="7_gx7k4"]
+[ext_resource type="Script" uid="uid://bs0bphxabbrfh" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_frame.gd" id="8_sslcr"]
+[ext_resource type="Texture2D" uid="uid://bb137jdlbfxei" path="res://addons/neocortex-godot-sdk/samples/visuals/dots.png" id="9_v5xxf"]
+[ext_resource type="Texture2D" uid="uid://fekwqjc14r3g" path="res://addons/neocortex-godot-sdk/samples/visuals/corner.png" id="10_vhsfm"]
+[ext_resource type="Texture2D" uid="uid://c62rhvfdwngpp" path="res://addons/neocortex-godot-sdk/samples/visuals/logo.png" id="11_qf2p3"]
+[ext_resource type="Script" uid="uid://cxnks6xk01e0u" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_back_button.gd" id="12_oorxx"]
+[ext_resource type="PackedScene" uid="uid://hikrbbj2768m" path="res://addons/neocortex-godot-sdk/nodes/NeocortexChatPanel.tscn" id="13_i1ya1"]
+[ext_resource type="PackedScene" uid="uid://swtjnd20ssuu" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTextChatInput.tscn" id="15_tiaae"]
+[ext_resource type="PackedScene" uid="uid://nroh3bum6eag" path="res://addons/neocortex-godot-sdk/nodes/NeocortexAudioChatInput.tscn" id="17_ym18s"]
+[ext_resource type="Script" uid="uid://dq1g3xobomp7w" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_chat_ui.gd" id="19_5qg5c"]
+[ext_resource type="Script" uid="uid://dbrv1g17sj66q" path="res://addons/neocortex-godot-sdk/runtime/neocortex_smart_agent.gd" id="20_pcdlw"]
+[ext_resource type="Script" uid="uid://7fymklbk56oa" path="res://addons/neocortex-godot-sdk/runtime/audio/neocortex_audio_receiver.gd" id="21_875af"]
 
-[sub_resource type="Environment" id="Environment_2oxeo"]
+[sub_resource type="Environment" id="Environment_htpgj"]
 background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(0.212, 0.227, 0.259, 1)
 ambient_light_energy = 1.6
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ym18s"]
-albedo_texture = ExtResource("2_m5j04")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sdnax"]
+albedo_texture = ExtResource("2_5ka31")
 roughness = 0.6
 uv1_scale = Vector3(30, 30, 1)
 texture_filter = 5
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_d6e76"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_yj33u"]
 size = Vector2(10, 10)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5qg5c"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6e51b"]
 albedo_color = Color(0.604, 0, 0, 1)
 roughness = 0.5
 
-[sub_resource type="BoxMesh" id="BoxMesh_pcdlw"]
+[sub_resource type="BoxMesh" id="BoxMesh_vwhr3"]
 size = Vector3(0.3, 0.1, 0.3)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_875af"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s3tav"]
 albedo_color = Color(1, 0.726, 0, 1)
 roughness = 0.5
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_htpgj"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_8e4ma"]
 top_radius = 0.25
 bottom_radius = 0.25
 height = 0.1
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sdnax"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sojrm"]
 albedo_color = Color(0, 0.197, 0.604, 1)
 roughness = 0.5
 
-[sub_resource type="BoxMesh" id="BoxMesh_yj33u"]
+[sub_resource type="BoxMesh" id="BoxMesh_kp4jd"]
 size = Vector3(0.3, 0.1, 0.3)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6e51b"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5i2en"]
 content_margin_left = 16.0
 content_margin_top = 8.0
 content_margin_right = 16.0
@@ -69,16 +69,16 @@ corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 corner_detail = 12
 
-[sub_resource type="Gradient" id="Gradient_vwhr3"]
+[sub_resource type="Gradient" id="Gradient_5c7pb"]
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_s3tav"]
-gradient = SubResource("Gradient_vwhr3")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gmpaf"]
+gradient = SubResource("Gradient_5c7pb")
 width = 4
 height = 128
 fill_to = Vector2(0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8e4ma"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ow5n0"]
 content_margin_left = 16.0
 content_margin_top = 8.0
 content_margin_right = 16.0
@@ -90,35 +90,49 @@ corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 corner_detail = 12
 
-[node name="InteractablesDemo" type="Node3D" unique_id=2101443405 node_paths=PackedStringArray("chat_ui", "character")]
-script = ExtResource("1_tis3d")
+[node name="InteractablesDemo" type="Node3D" unique_id=562076053 node_paths=PackedStringArray("chat_ui", "character")]
+script = ExtResource("1_oe6y0")
 chat_ui = NodePath("NeocortexChat")
 character = NodePath("Cora")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=798486497]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1446472493]
 transform = Transform3D(0.70710677, 0.24184474, -0.664463, 0, 0.9396926, 0.34202012, 0.70710677, -0.24184474, 0.664463, -3, 2, 3)
 fov = 60.0
 
-[node name="DirectionalLight" type="DirectionalLight3D" parent="." unique_id=1531380251]
+[node name="DirectionalLight" type="DirectionalLight3D" parent="." unique_id=919914974]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
 light_energy = 1.4
 shadow_enabled = true
 directional_shadow_max_distance = 30.0
 
-[node name="Environment" type="WorldEnvironment" parent="." unique_id=1698700519]
-environment = SubResource("Environment_2oxeo")
+[node name="Environment" type="WorldEnvironment" parent="." unique_id=1699948498]
+environment = SubResource("Environment_htpgj")
 
-[node name="Floor" type="MeshInstance3D" parent="." unique_id=1054502651]
-material_override = SubResource("StandardMaterial3D_ym18s")
-mesh = SubResource("PlaneMesh_d6e76")
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=1321689663]
+material_override = SubResource("StandardMaterial3D_sdnax")
+mesh = SubResource("PlaneMesh_yj33u")
 
-[node name="Cora" type="Node3D" parent="." unique_id=1176326766]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0)
-script = ExtResource("3_wq4fg")
+[node name="Cora" type="Node3D" parent="." unique_id=1315050950]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
+script = ExtResource("3_r4c3r")
 
-[node name="RedSquare" type="Node3D" parent="." unique_id=964465380]
+[node name="Cora" parent="Cora" unique_id=1202524141 instance=ExtResource("4_nbivk")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cora" unique_id=1552465034]
+root_node = NodePath("../Cora")
+libraries/cora = ExtResource("5_tu14i")
+
+[node name="NameTag" type="Label3D" parent="Cora" unique_id=120713014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95, 0)
+visible = false
+billboard = 1
+text = "Cora"
+font_size = 26
+outline_size = 6
+
+[node name="RedSquare" type="Node3D" parent="." unique_id=829058264]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -2)
-script = ExtResource("4_oe6y0")
+script = ExtResource("6_ydqrk")
 properties = Array[Dictionary]([{
 "name": "color",
 "value": "red"
@@ -127,13 +141,13 @@ properties = Array[Dictionary]([{
 "value": "square"
 }])
 
-[node name="Mesh" type="MeshInstance3D" parent="RedSquare" unique_id=806200615]
-material_override = SubResource("StandardMaterial3D_5qg5c")
-mesh = SubResource("BoxMesh_pcdlw")
+[node name="Mesh" type="MeshInstance3D" parent="RedSquare" unique_id=1851376185]
+material_override = SubResource("StandardMaterial3D_6e51b")
+mesh = SubResource("BoxMesh_vwhr3")
 
-[node name="YellowCircle" type="Node3D" parent="." unique_id=1930033960]
+[node name="YellowCircle" type="Node3D" parent="." unique_id=1904849470]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
-script = ExtResource("4_oe6y0")
+script = ExtResource("6_ydqrk")
 properties = Array[Dictionary]([{
 "name": "color",
 "value": "yellow"
@@ -142,13 +156,13 @@ properties = Array[Dictionary]([{
 "value": "circle"
 }])
 
-[node name="Mesh" type="MeshInstance3D" parent="YellowCircle" unique_id=601972353]
-material_override = SubResource("StandardMaterial3D_875af")
-mesh = SubResource("CylinderMesh_htpgj")
+[node name="Mesh" type="MeshInstance3D" parent="YellowCircle" unique_id=1932771645]
+material_override = SubResource("StandardMaterial3D_s3tav")
+mesh = SubResource("CylinderMesh_8e4ma")
 
-[node name="BlueSquare" type="Node3D" parent="." unique_id=419150478]
+[node name="BlueSquare" type="Node3D" parent="." unique_id=479167249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 2)
-script = ExtResource("4_oe6y0")
+script = ExtResource("6_ydqrk")
 properties = Array[Dictionary]([{
 "name": "color",
 "value": "blue"
@@ -157,37 +171,37 @@ properties = Array[Dictionary]([{
 "value": "square"
 }])
 
-[node name="Mesh" type="MeshInstance3D" parent="BlueSquare" unique_id=1717624006]
-material_override = SubResource("StandardMaterial3D_sdnax")
-mesh = SubResource("BoxMesh_yj33u")
+[node name="Mesh" type="MeshInstance3D" parent="BlueSquare" unique_id=1814979313]
+material_override = SubResource("StandardMaterial3D_sojrm")
+mesh = SubResource("BoxMesh_kp4jd")
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=584336226]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1519319182]
 
-[node name="Frame" type="Control" parent="UI" unique_id=1535211954]
+[node name="Frame" type="Control" parent="UI" unique_id=1703515388]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
-theme = ExtResource("5_5ka31")
-script = ExtResource("6_r4c3r")
+theme = ExtResource("7_gx7k4")
+script = ExtResource("8_sslcr")
 
-[node name="Background" type="Control" parent="UI/Frame" unique_id=617302900]
+[node name="Background" type="Control" parent="UI/Frame" unique_id=1138713683]
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Dots" type="TextureRect" parent="UI/Frame/Background" unique_id=1537783229]
+[node name="Dots" type="TextureRect" parent="UI/Frame/Background" unique_id=1234037367]
 modulate = Color(1, 1, 1, 0.1)
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-texture = ExtResource("7_nbivk")
+texture = ExtResource("9_v5xxf")
 stretch_mode = 1
 
-[node name="LeftTop" type="TextureRect" parent="UI/Frame/Background" unique_id=1553507618]
+[node name="LeftTop" type="TextureRect" parent="UI/Frame/Background" unique_id=1317849955]
 modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
 layout_mode = 0
 offset_left = 32.0
@@ -195,9 +209,9 @@ offset_top = 32.0
 offset_right = 96.0
 offset_bottom = 96.0
 mouse_filter = 2
-texture = ExtResource("8_tu14i")
+texture = ExtResource("10_vhsfm")
 
-[node name="RightTop" type="TextureRect" parent="UI/Frame/Background" unique_id=1973970168]
+[node name="RightTop" type="TextureRect" parent="UI/Frame/Background" unique_id=1102803893]
 modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
 layout_mode = 0
 anchor_left = 1.0
@@ -207,10 +221,10 @@ offset_top = 32.0
 offset_right = -32.0
 offset_bottom = 96.0
 mouse_filter = 2
-texture = ExtResource("8_tu14i")
+texture = ExtResource("10_vhsfm")
 flip_h = true
 
-[node name="LeftBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=1543880240]
+[node name="LeftBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=1803970208]
 modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
 layout_mode = 0
 anchor_top = 1.0
@@ -220,10 +234,10 @@ offset_top = -96.0
 offset_right = 96.0
 offset_bottom = -32.0
 mouse_filter = 2
-texture = ExtResource("8_tu14i")
+texture = ExtResource("10_vhsfm")
 flip_v = true
 
-[node name="RightBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=1322326560]
+[node name="RightBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=1160334516]
 modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
 layout_mode = 0
 anchor_left = 1.0
@@ -235,21 +249,21 @@ offset_top = -96.0
 offset_right = -32.0
 offset_bottom = -32.0
 mouse_filter = 2
-texture = ExtResource("8_tu14i")
+texture = ExtResource("10_vhsfm")
 flip_h = true
 flip_v = true
 
-[node name="Logo" type="TextureRect" parent="UI/Frame/Background" unique_id=1207195023]
+[node name="Logo" type="TextureRect" parent="UI/Frame/Background" unique_id=105241917]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 64.0
 offset_right = 128.0
 offset_bottom = 128.0
 mouse_filter = 2
-texture = ExtResource("9_ydqrk")
+texture = ExtResource("11_qf2p3")
 expand_mode = 1
 
-[node name="Title" type="Label" parent="UI/Frame/Background" unique_id=736027184]
+[node name="Title" type="Label" parent="UI/Frame/Background" unique_id=1951696674]
 layout_mode = 0
 offset_left = 144.0
 offset_top = 60.0
@@ -258,7 +272,7 @@ offset_bottom = 100.0
 theme_type_variation = &"NeocortexTitle"
 text = "NEOCORTEX"
 
-[node name="DemoName" type="Label" parent="UI/Frame/Background" unique_id=227249048]
+[node name="DemoName" type="Label" parent="UI/Frame/Background" unique_id=2010267995]
 layout_mode = 0
 offset_left = 144.0
 offset_top = 100.0
@@ -267,7 +281,18 @@ offset_bottom = 128.0
 theme_type_variation = &"NeocortexSubtitle"
 text = "Godot SDK · Interactables Demo"
 
-[node name="Brief" type="Panel" parent="UI/Frame" unique_id=806575782]
+[node name="BackButton" type="Button" parent="UI/Frame" unique_id=2091687813]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 76.0
+offset_right = 678.0
+offset_bottom = 116.0
+tooltip_text = "Esc"
+theme_override_font_sizes/font_size = 18
+text = "Back to Samples"
+script = ExtResource("12_oorxx")
+
+[node name="Brief" type="Panel" parent="UI/Frame" unique_id=429591734]
 layout_mode = 0
 anchor_left = 1.0
 anchor_top = 0.5
@@ -278,9 +303,9 @@ offset_top = -256.0
 offset_right = -32.0
 offset_bottom = 256.0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_6e51b")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5i2en")
 
-[node name="Title" type="Label" parent="UI/Frame/Brief" unique_id=691416595]
+[node name="Title" type="Label" parent="UI/Frame/Brief" unique_id=746218543]
 layout_mode = 0
 anchor_right = 1.0
 offset_left = 8.0
@@ -290,7 +315,7 @@ offset_bottom = 40.0
 theme_type_variation = &"NeocortexHeading"
 text = "DEMO BRIEF"
 
-[node name="Separator" type="ColorRect" parent="UI/Frame/Brief" unique_id=949001581]
+[node name="Separator" type="ColorRect" parent="UI/Frame/Brief" unique_id=1068142311]
 layout_mode = 0
 anchor_right = 1.0
 offset_left = 8.0
@@ -300,7 +325,7 @@ offset_bottom = 48.0
 mouse_filter = 2
 color = Color(1, 1, 1, 0.1)
 
-[node name="Body" type="RichTextLabel" parent="UI/Frame/Brief" unique_id=1334199683]
+[node name="Body" type="RichTextLabel" parent="UI/Frame/Brief" unique_id=1858842733]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -318,7 +343,7 @@ text = "[b]This scene demonstrates a character's spatial understanding through I
 fit_content = true
 scroll_active = false
 
-[node name="ChatBackdrop" type="TextureRect" parent="UI/Frame" unique_id=1774742006]
+[node name="ChatBackdrop" type="TextureRect" parent="UI/Frame" unique_id=130440075]
 clip_children = 1
 layout_mode = 0
 anchor_top = 0.5
@@ -328,18 +353,17 @@ offset_top = -296.0
 offset_right = 544.0
 offset_bottom = 216.0
 mouse_filter = 2
-texture = SubResource("GradientTexture2D_s3tav")
+texture = SubResource("GradientTexture2D_gmpaf")
 expand_mode = 1
 
-[node name="Backdrop" type="Panel" parent="UI/Frame/ChatBackdrop" unique_id=997681588]
+[node name="Backdrop" type="Panel" parent="UI/Frame/ChatBackdrop" unique_id=33539660]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_8e4ma")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ow5n0")
 
-[node name="ChatPanel" type="ScrollContainer" parent="UI/Frame" unique_id=1435552477 instance=ExtResource("10_gx7k4")]
-custom_minimum_size = Vector2(256, 256)
+[node name="ChatPanel" parent="UI/Frame" unique_id=1435552477 instance=ExtResource("13_i1ya1")]
 layout_mode = 0
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -347,13 +371,8 @@ offset_left = 40.0
 offset_top = -288.0
 offset_right = 536.0
 offset_bottom = 208.0
-theme = ExtResource("5_5ka31")
-follow_focus = true
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 3
-script = ExtResource("11_sslcr")
 
-[node name="InputRow" type="HBoxContainer" parent="UI/Frame" unique_id=1544763565]
+[node name="InputRow" type="HBoxContainer" parent="UI/Frame" unique_id=1776883384]
 layout_mode = 0
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -363,38 +382,31 @@ offset_right = 544.0
 offset_bottom = 296.0
 theme_override_constants/separation = 16
 
-[node name="TextChatInput" type="HBoxContainer" parent="UI/Frame/InputRow" unique_id=1011791751 instance=ExtResource("12_v5xxf")]
-custom_minimum_size = Vector2(320, 64)
+[node name="TextChatInput" parent="UI/Frame/InputRow" unique_id=2039248196 instance=ExtResource("15_tiaae")]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("5_5ka31")
-theme_override_constants/separation = 16
-script = ExtResource("13_vhsfm")
 placeholder = "Say something..."
 
-[node name="AudioChatInput" type="HBoxContainer" parent="UI/Frame/InputRow" unique_id=1230876203 node_paths=PackedStringArray("audio_receiver") instance=ExtResource("14_qf2p3")]
-custom_minimum_size = Vector2(0, 64)
+[node name="AudioChatInput" parent="UI/Frame/InputRow" unique_id=627406810 node_paths=PackedStringArray("audio_receiver") instance=ExtResource("17_ym18s")]
 layout_mode = 2
-theme = ExtResource("5_5ka31")
-theme_override_constants/separation = 16
-alignment = 1
-script = ExtResource("15_oorxx")
 audio_receiver = NodePath("../../../../NeocortexChat/Microphone")
 
-[node name="NeocortexChat" type="Node" parent="." unique_id=17152275 node_paths=PackedStringArray("agent", "chat_panel", "text_input", "audio_input", "voice_input")]
-script = ExtResource("16_i1ya1")
+[node name="NeocortexChat" type="Node" parent="." unique_id=1187663165 node_paths=PackedStringArray("agent", "chat_panel", "text_input", "audio_input", "voice_input")]
+script = ExtResource("19_5qg5c")
 agent = NodePath("Character")
 chat_panel = NodePath("../UI/Frame/ChatPanel")
 text_input = NodePath("../UI/Frame/InputRow/TextChatInput")
 audio_input = NodePath("../UI/Frame/InputRow/AudioChatInput")
 voice_input = NodePath("Microphone")
 
-[node name="Character" type="Node" parent="NeocortexChat" unique_id=57581128 node_paths=PackedStringArray("audio_player", "body")]
-script = ExtResource("17_5e5e7")
+[node name="Character" type="Node" parent="NeocortexChat" unique_id=572110052 node_paths=PackedStringArray("audio_player", "body")]
+script = ExtResource("20_pcdlw")
 audio_player = NodePath("Voice")
+action_trigger = 1
+delay_between_actions = 0.5
 body = NodePath("../../Cora")
 
-[node name="Voice" type="AudioStreamPlayer" parent="NeocortexChat/Character" unique_id=1447173033]
+[node name="Voice" type="AudioStreamPlayer" parent="NeocortexChat/Character" unique_id=53582917]
 
-[node name="Microphone" type="Node" parent="NeocortexChat" unique_id=276550441]
-script = ExtResource("18_tiaae")
+[node name="Microphone" type="Node" parent="NeocortexChat" unique_id=1998852989]
+script = ExtResource("21_875af")

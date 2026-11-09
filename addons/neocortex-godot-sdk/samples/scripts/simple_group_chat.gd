@@ -16,7 +16,8 @@ extends Node
 @export var toggles: Array[Button] = []
 ## What seated characters turn to face, usually the camera.
 @export var face_target: Node3D
-@export var move_speed: float = 2.0
+## Matches Cora's walk cycle, so her feet stay planted instead of sliding.
+@export var move_speed: float = 1.6
 
 var _present: Array[bool] = []
 

@@ -33,6 +33,9 @@ extends Node
 ## When a reply's actions run: on arrival, as speech starts, or after the reply is
 ## spoken. The last two need an audio or TEXT mode; OFF falls back to on arrival.
 @export var action_trigger: NeocortexEnums.ActionTrigger = NeocortexEnums.ActionTrigger.WHEN_RESPONSE_RECEIVED
+## Seconds to wait after one action finishes before the next one starts, when a reply
+## carries several. 0 runs them back to back.
+@export_range(0.0, 10.0, 0.05, "or_greater", "suffix:s") var delay_between_actions: float = 0.0
 
 @export_group("Streaming")
 ## Play speech as it is synthesized (/v3/audio/stream) instead of waiting for whole
@@ -596,6 +599,13 @@ func _process_actions() -> void:
 			push_warning("[Neocortex] %s asked for action '%s', which has no handler. Register one with register_action()." % [name, action.name])
 		if not is_inside_tree():
 			return
+		if delay_between_actions > 0.0 and not _action_queue.is_empty():
+			# Wall clock time, like the agent's other waits.
+			var resume_at := Time.get_ticks_msec() + int(delay_between_actions * 1000.0)
+			while Time.get_ticks_msec() < resume_at:
+				await get_tree().process_frame
+				if not is_inside_tree():
+					return
 	_actions_running = false
 	actions_completed.emit()
 

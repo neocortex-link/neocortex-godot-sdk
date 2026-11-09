@@ -1,8 +1,8 @@
-[gd_resource type="Theme" format=3]
+[gd_resource type="Theme" format=3 uid="uid://bgwwg5703xat5"]
 
-[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/images/ui/toggle_on.png" id="1_i30hi"]
-[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/images/ui/toggle_off.png" id="2_us6hq"]
-[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/images/ui/dropdown_arrow.png" id="3_kgspp"]
+[ext_resource type="Texture2D" uid="uid://def47uw7qs4b3" path="res://addons/neocortex-godot-sdk/images/ui/toggle_on.png" id="1_i30hi"]
+[ext_resource type="Texture2D" uid="uid://dmkp7i8nopbf2" path="res://addons/neocortex-godot-sdk/images/ui/toggle_off.png" id="2_us6hq"]
+[ext_resource type="Texture2D" uid="uid://coke5l2q17di4" path="res://addons/neocortex-godot-sdk/images/ui/dropdown_arrow.png" id="3_kgspp"]
 
 [sub_resource type="SystemFont" id="SystemFont_i30hi"]
 font_names = PackedStringArray("Arial", "Helvetica", "Liberation Sans", "Arimo", "sans-serif")

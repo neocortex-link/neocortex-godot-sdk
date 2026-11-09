@@ -52,7 +52,7 @@ func _ready() -> void:
 
 | Node or class | What it does |
 | --- | --- |
-| `NeocortexSmartAgent` | One character. `text_to_text`, `text_to_audio`, `audio_to_text`, `audio_to_audio`. Replies arrive as lines, each with its emotion; `chat_lines_mode` picks a voice per line, one clip, text only, or the whole reply at once. Speech streams as it is generated. Register actions with `register_action(keyword, handler)`; `action_trigger` sets when they run. |
+| `NeocortexSmartAgent` | One character. `text_to_text`, `text_to_audio`, `audio_to_text`, `audio_to_audio`. Replies arrive as lines, each with its emotion; `chat_lines_mode` picks a voice per line, one clip, text only, or the whole reply at once. Speech streams as it is generated. Register actions with `register_action(keyword, handler)`; `action_trigger` sets when they run, and `delay_between_actions` pauses between them. |
 | `NeocortexGroupDirector` | Up to three characters in one conversation: `send`, `send_to`, `continue_scene`, `send_audio`, and `add_agent` / `remove_agent` while it runs. Needs a Pro or Team plan. |
 | `NeocortexQuizAgent` | A character hosts a quiz from a question set: `begin`, `say`, `choose`, `pass_turn`, and `say_as` / `choose_as` for several players. The server handles order, retries, hints and scoring. |
 | `NeocortexUsageGate` | Credits and per player or per character limits as flags and signals. Free to call, cached. |
