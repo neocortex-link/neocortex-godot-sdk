@@ -46,6 +46,8 @@ const THINK_AFTER := 0.35
 var _cast: Array[NeocortexQuizParticipant] = []
 var _seats: Array[Dictionary] = [] # { id, card, name, score, verdict }
 var _current := 0
+# Players who answered this round and whose answer the server has not taken in yet.
+var _sent := {}
 var _clock := 0.0
 var _busy_for := 0.0
 ## The last failure, shown until the next action.
@@ -71,7 +73,9 @@ func _ready() -> void:
 		agent.resync())
 	hint_button.pressed.connect(func():
 		if _accepting():
-			_answer_as_current("Can I have a hint?", false))
+			# Asking for a hint is not an answer, so the same player stays up.
+			chat_panel.add_message("Can I have a hint?", true, _cast[_current].display_name)
+			agent.say_as(_cast[_current].id, "Can I have a hint?", false))
 	pass_button.pressed.connect(func(): _pass(_current))
 	pass_rest_button.pressed.connect(_pass_rest)
 	answer_input.send_submitted.connect(func(text: String): _answer_as_current(text, typed_toggle.button_pressed))
@@ -106,7 +110,11 @@ func _listen() -> void:
 			if not seat.is_empty():
 				seat.score.text = str(entry.total_score))
 	agent.expecting_changed.connect(func(_e): _refresh())
-	agent.busy_changed.connect(func(_b): _refresh())
+	agent.busy_changed.connect(func(busy: bool):
+		# Once every answer is in, the agent's lists are the truth again.
+		if not busy:
+			_sent.clear()
+		_select_next())
 	agent.quiz_finished.connect(func(board: Array):
 		var lines := PackedStringArray()
 		for entry in board:
@@ -136,6 +144,7 @@ func _begin() -> void:
 	for seat in _seats:
 		seat.verdict = Color.TRANSPARENT
 		seat.score.text = "0"
+	_sent.clear()
 	agent.begin(_cast)
 
 func _answer_as_current(text: String, typed: bool) -> void:
@@ -144,7 +153,7 @@ func _answer_as_current(text: String, typed: bool) -> void:
 	_error = ""
 	chat_panel.add_message(text, true, _cast[_current].display_name)
 	agent.say_as(_cast[_current].id, text, typed)
-	_after_answer()
+	_after_answer(_current)
 
 func _choose(option_id: String, option_text: String) -> void:
 	if not _accepting():
@@ -152,7 +161,7 @@ func _choose(option_id: String, option_text: String) -> void:
 	_error = ""
 	chat_panel.add_message(option_text, true, _cast[_current].display_name)
 	agent.choose_as(_cast[_current].id, option_id)
-	_after_answer()
+	_after_answer(_current)
 
 func _pass(index: int) -> void:
 	if not _accepting():
@@ -160,26 +169,34 @@ func _pass(index: int) -> void:
 	_error = ""
 	_note("%s passes." % _cast[index].display_name, MUTED)
 	agent.pass_as(_cast[index].id)
-	_after_answer()
+	_after_answer(index)
 
 func _pass_rest() -> void:
 	for player in _cast:
-		if agent.pending_participants.has(player.id):
+		if agent.pending_participants.has(player.id) and not _sent.has(player.id):
 			agent.pass_as(player.id)
+			_sent[player.id] = true
+	_select_next()
 
-func _after_answer() -> void:
+func _after_answer(index: int) -> void:
+	_sent[_cast[index].id] = true
 	_clock = answer_seconds
 	_select_next()
 
-# The next player the round still waits on, after the current one.
+# The first player from the left the round still waits on.
 func _select_next() -> void:
-	for step in range(1, _cast.size() + 1):
-		var index := (_current + step) % _cast.size()
-		var id := _cast[index].id
-		if agent.pending_participants.has(id) and not agent.answered_participants.has(id):
-			_select(index)
+	for index in _cast.size():
+		if _waiting_on(index):
+			if index != _current:
+				_select(index)
+			else:
+				_refresh()
 			return
 	_refresh()
+
+func _waiting_on(index: int) -> bool:
+	var id := _cast[index].id
+	return agent.pending_participants.has(id) and not agent.answered_participants.has(id) and not _sent.has(id)
 
 func _select(index: int) -> void:
 	_current = clampi(index, 0, _cast.size() - 1)
@@ -200,7 +217,9 @@ func _show_question(question: NeocortexQuizQuestion) -> void:
 			options_box.add_child(button)
 	for seat in _seats:
 		seat.verdict = Color.TRANSPARENT
+	_sent.clear()
 	_select(0)
+	_select_next()
 
 # ------------------------------------------------------------------
 # STATE
