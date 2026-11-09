@@ -1,41 +1,44 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/simple_group_chat.gd" id="1_r16uk"]
-[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/checker.png" id="2_2cj6m"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/neocortex_group_director.gd" id="3_72644"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_character.gd" id="4_1csy1"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/neocortex_smart_agent.gd" id="5_wo1rq"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/neocortex_face_animator.gd" id="6_xbaf6"]
-[ext_resource type="Theme" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTheme.tres" id="7_u4yms"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_frame.gd" id="8_tqbeq"]
-[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/dots.png" id="9_odgp6"]
-[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/corner.png" id="10_vyrt1"]
-[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/logo.png" id="11_5nsei"]
-[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexChatPanel.tscn" id="12_ftvgq"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_chat_panel.gd" id="13_gbdnv"]
-[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTextChatInput.tscn" id="14_l4wpg"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_text_chat_input.gd" id="15_ytpj4"]
-[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexAudioChatInput.tscn" id="16_lmnio"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_audio_chat_input.gd" id="17_k12dj"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_group_chat_ui.gd" id="18_kefhp"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/audio/neocortex_audio_receiver.gd" id="19_p231u"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/simple_group_chat.gd" id="1_1csy1"]
+[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/checker.png" id="2_wo1rq"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/neocortex_group_director.gd" id="3_xbaf6"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_character.gd" id="4_u4yms"]
+[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/samples/cora/cora.fbx" id="5_tqbeq"]
+[ext_resource type="AnimationLibrary" path="res://addons/neocortex-godot-sdk/samples/cora/cora_animations.res" id="6_odgp6"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/neocortex_smart_agent.gd" id="7_vyrt1"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/neocortex_face_animator.gd" id="8_5nsei"]
+[ext_resource type="Theme" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTheme.tres" id="9_ftvgq"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_frame.gd" id="10_gbdnv"]
+[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/dots.png" id="11_l4wpg"]
+[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/corner.png" id="12_ytpj4"]
+[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/logo.png" id="13_lmnio"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_back_button.gd" id="14_k12dj"]
+[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexChatPanel.tscn" id="15_kefhp"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_chat_panel.gd" id="16_p231u"]
+[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTextChatInput.tscn" id="17_ox70x"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_text_chat_input.gd" id="18_vtgq3"]
+[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexAudioChatInput.tscn" id="19_e2qu7"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_audio_chat_input.gd" id="20_jdomg"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_group_chat_ui.gd" id="21_w8ltp"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/audio/neocortex_audio_receiver.gd" id="22_8i425"]
 
-[sub_resource type="Environment" id="Environment_ox70x"]
+[sub_resource type="Environment" id="Environment_i5mpw"]
 background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(0.212, 0.227, 0.259, 1)
 ambient_light_energy = 1.6
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtgq3"]
-albedo_texture = ExtResource("2_2cj6m")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_opogh"]
+albedo_texture = ExtResource("2_wo1rq")
 roughness = 0.6
 uv1_scale = Vector3(30, 30, 1)
 texture_filter = 5
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_e2qu7"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_xnt15"]
 size = Vector2(10, 10)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jdomg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rj416"]
 content_margin_left = 16.0
 content_margin_top = 8.0
 content_margin_right = 16.0
@@ -47,16 +50,16 @@ corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 corner_detail = 12
 
-[sub_resource type="Gradient" id="Gradient_w8ltp"]
+[sub_resource type="Gradient" id="Gradient_de6j2"]
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8i425"]
-gradient = SubResource("Gradient_w8ltp")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g37bb"]
+gradient = SubResource("Gradient_de6j2")
 width = 4
 height = 128
 fill_to = Vector2(0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5mpw"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ashc"]
 content_margin_left = 16.0
 content_margin_top = 8.0
 content_margin_right = 16.0
@@ -68,8 +71,8 @@ corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 corner_detail = 12
 
-[node name="GroupChatDemo" type="Node3D" unique_id=198442307 node_paths=PackedStringArray("director", "members", "seats", "offstage", "toggles", "face_target")]
-script = ExtResource("1_r16uk")
+[node name="GroupChatDemo" type="Node3D" unique_id=506358898 node_paths=PackedStringArray("director", "members", "seats", "offstage", "toggles", "face_target")]
+script = ExtResource("1_1csy1")
 director = NodePath("GroupDirector")
 members = [NodePath("Character1/Agent"), NodePath("Character2/Agent")]
 seats = [NodePath("Seat1"), NodePath("Seat2")]
@@ -78,120 +81,162 @@ starts_present = Array[bool]([true, false])
 toggles = [NodePath("UI/Frame/CharacterToggles/Character1Toggle"), NodePath("UI/Frame/CharacterToggles/Character2Toggle")]
 face_target = NodePath("Camera3D")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=681806253]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=451459379]
 transform = Transform3D(0.70710677, 0.24184474, -0.664463, 0, 0.9396926, 0.34202012, 0.70710677, -0.24184474, 0.664463, -3, 2, 3)
 fov = 60.0
 
-[node name="DirectionalLight" type="DirectionalLight3D" parent="." unique_id=1976280620]
+[node name="DirectionalLight" type="DirectionalLight3D" parent="." unique_id=1360780401]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
 light_energy = 1.4
 shadow_enabled = true
 directional_shadow_max_distance = 30.0
 
-[node name="Environment" type="WorldEnvironment" parent="." unique_id=1422637546]
-environment = SubResource("Environment_ox70x")
+[node name="Environment" type="WorldEnvironment" parent="." unique_id=66967375]
+environment = SubResource("Environment_i5mpw")
 
-[node name="Floor" type="MeshInstance3D" parent="." unique_id=797603774]
-material_override = SubResource("StandardMaterial3D_vtgq3")
-mesh = SubResource("PlaneMesh_e2qu7")
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=1924418204]
+material_override = SubResource("StandardMaterial3D_opogh")
+mesh = SubResource("PlaneMesh_xnt15")
 
-[node name="GroupDirector" type="Node" parent="." unique_id=2042963204 node_paths=PackedStringArray("agents")]
-script = ExtResource("3_72644")
+[node name="GroupDirector" type="Node" parent="." unique_id=1092500502 node_paths=PackedStringArray("agents")]
+script = ExtResource("3_xbaf6")
 agents = [NodePath("../Cora/Agent")]
 max_turns = 3
 
-[node name="Cora" type="Node3D" parent="." unique_id=1483698518]
+[node name="Cora" type="Node3D" parent="." unique_id=1755873704]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 1.2)
-script = ExtResource("4_1csy1")
+script = ExtResource("4_u4yms")
 
-[node name="Agent" type="Node" parent="Cora" unique_id=913608648 node_paths=PackedStringArray("audio_player", "body")]
-script = ExtResource("5_wo1rq")
+[node name="Cora" type="Node3D" parent="Cora" unique_id=1202524141 instance=ExtResource("5_tqbeq")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cora" unique_id=234789650]
+root_node = NodePath("../Cora")
+libraries/cora = ExtResource("6_odgp6")
+
+[node name="NameTag" type="Label3D" parent="Cora" unique_id=800293124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95, 0)
+visible = false
+billboard = 1
+text = "Cora"
+font_size = 26
+outline_size = 6
+
+[node name="Agent" type="Node" parent="Cora" unique_id=656974400 node_paths=PackedStringArray("audio_player", "body")]
+script = ExtResource("7_vyrt1")
 chat_lines_mode = 2
 audio_player = NodePath("Voice")
 auto_voice_input = false
 body = NodePath("..")
 
-[node name="Voice" type="AudioStreamPlayer" parent="Cora/Agent" unique_id=1431627815]
+[node name="Voice" type="AudioStreamPlayer" parent="Cora/Agent" unique_id=216268412]
 
-[node name="FaceAnimator" type="Node" parent="Cora/Agent" unique_id=1577115189 node_paths=PackedStringArray("agent")]
-script = ExtResource("6_xbaf6")
+[node name="FaceAnimator" type="Node" parent="Cora/Agent" unique_id=1301320088 node_paths=PackedStringArray("agent")]
+script = ExtResource("8_5nsei")
 agent = NodePath("..")
 
-[node name="Character1" type="Node3D" parent="." unique_id=1068292681]
+[node name="Character1" type="Node3D" parent="." unique_id=1108071826]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0.5)
-script = ExtResource("4_1csy1")
+script = ExtResource("4_u4yms")
 display_name = "Character 1"
 
-[node name="Agent" type="Node" parent="Character1" unique_id=1627509089 node_paths=PackedStringArray("audio_player", "body")]
-script = ExtResource("5_wo1rq")
+[node name="Cora" type="Node3D" parent="Character1" unique_id=547972018 instance=ExtResource("5_tqbeq")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Character1" unique_id=665852221]
+root_node = NodePath("../Cora")
+libraries/cora = ExtResource("6_odgp6")
+
+[node name="NameTag" type="Label3D" parent="Character1" unique_id=766759619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95, 0)
+visible = false
+billboard = 1
+text = "Character 1"
+font_size = 26
+outline_size = 6
+
+[node name="Agent" type="Node" parent="Character1" unique_id=1527220711 node_paths=PackedStringArray("audio_player", "body")]
+script = ExtResource("7_vyrt1")
 chat_lines_mode = 2
 audio_player = NodePath("Voice")
 auto_voice_input = false
 body = NodePath("..")
 
-[node name="Voice" type="AudioStreamPlayer" parent="Character1/Agent" unique_id=1372327761]
+[node name="Voice" type="AudioStreamPlayer" parent="Character1/Agent" unique_id=394799562]
 
-[node name="FaceAnimator" type="Node" parent="Character1/Agent" unique_id=1024221504 node_paths=PackedStringArray("agent")]
-script = ExtResource("6_xbaf6")
+[node name="FaceAnimator" type="Node" parent="Character1/Agent" unique_id=1461111199 node_paths=PackedStringArray("agent")]
+script = ExtResource("8_5nsei")
 agent = NodePath("..")
 
-[node name="Seat1" type="Marker3D" parent="." unique_id=236672731]
+[node name="Seat1" type="Marker3D" parent="." unique_id=641081008]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0.5)
 
-[node name="Offstage1" type="Marker3D" parent="." unique_id=1632907483]
+[node name="Offstage1" type="Marker3D" parent="." unique_id=1038440537]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
-[node name="Character2" type="Node3D" parent="." unique_id=880645376]
+[node name="Character2" type="Node3D" parent="." unique_id=2025318095]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 2)
-script = ExtResource("4_1csy1")
+script = ExtResource("4_u4yms")
 display_name = "Character 2"
 
-[node name="Agent" type="Node" parent="Character2" unique_id=1229124868 node_paths=PackedStringArray("audio_player", "body")]
-script = ExtResource("5_wo1rq")
+[node name="Cora" type="Node3D" parent="Character2" unique_id=170898514 instance=ExtResource("5_tqbeq")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Character2" unique_id=1298803148]
+root_node = NodePath("../Cora")
+libraries/cora = ExtResource("6_odgp6")
+
+[node name="NameTag" type="Label3D" parent="Character2" unique_id=1569045702]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95, 0)
+visible = false
+billboard = 1
+text = "Character 2"
+font_size = 26
+outline_size = 6
+
+[node name="Agent" type="Node" parent="Character2" unique_id=387809608 node_paths=PackedStringArray("audio_player", "body")]
+script = ExtResource("7_vyrt1")
 chat_lines_mode = 2
 audio_player = NodePath("Voice")
 auto_voice_input = false
 body = NodePath("..")
 
-[node name="Voice" type="AudioStreamPlayer" parent="Character2/Agent" unique_id=669849086]
+[node name="Voice" type="AudioStreamPlayer" parent="Character2/Agent" unique_id=428405623]
 
-[node name="FaceAnimator" type="Node" parent="Character2/Agent" unique_id=1574249770 node_paths=PackedStringArray("agent")]
-script = ExtResource("6_xbaf6")
+[node name="FaceAnimator" type="Node" parent="Character2/Agent" unique_id=1743383319 node_paths=PackedStringArray("agent")]
+script = ExtResource("8_5nsei")
 agent = NodePath("..")
 
-[node name="Seat2" type="Marker3D" parent="." unique_id=39901014]
+[node name="Seat2" type="Marker3D" parent="." unique_id=595420366]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 2)
 
-[node name="Offstage2" type="Marker3D" parent="." unique_id=1434270696]
+[node name="Offstage2" type="Marker3D" parent="." unique_id=1052299508]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=979083406]
+[node name="UI" type="CanvasLayer" parent="." unique_id=508955367]
 
-[node name="Frame" type="Control" parent="UI" unique_id=1346736748]
+[node name="Frame" type="Control" parent="UI" unique_id=842186912]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
-theme = ExtResource("7_u4yms")
-script = ExtResource("8_tqbeq")
+theme = ExtResource("9_ftvgq")
+script = ExtResource("10_gbdnv")
 
-[node name="Background" type="Control" parent="UI/Frame" unique_id=2016711223]
+[node name="Background" type="Control" parent="UI/Frame" unique_id=491145233]
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Dots" type="TextureRect" parent="UI/Frame/Background" unique_id=1484737034]
+[node name="Dots" type="TextureRect" parent="UI/Frame/Background" unique_id=1109573626]
 modulate = Color(1, 1, 1, 0.1)
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-texture = ExtResource("9_odgp6")
+texture = ExtResource("11_l4wpg")
 stretch_mode = 1
 
-[node name="LeftTop" type="TextureRect" parent="UI/Frame/Background" unique_id=1973626214]
+[node name="LeftTop" type="TextureRect" parent="UI/Frame/Background" unique_id=703143705]
 modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
 layout_mode = 0
 offset_left = 32.0
@@ -199,9 +244,9 @@ offset_top = 32.0
 offset_right = 96.0
 offset_bottom = 96.0
 mouse_filter = 2
-texture = ExtResource("10_vyrt1")
+texture = ExtResource("12_ytpj4")
 
-[node name="RightTop" type="TextureRect" parent="UI/Frame/Background" unique_id=731839009]
+[node name="RightTop" type="TextureRect" parent="UI/Frame/Background" unique_id=508323370]
 modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
 layout_mode = 0
 anchor_left = 1.0
@@ -211,10 +256,10 @@ offset_top = 32.0
 offset_right = -32.0
 offset_bottom = 96.0
 mouse_filter = 2
-texture = ExtResource("10_vyrt1")
+texture = ExtResource("12_ytpj4")
 flip_h = true
 
-[node name="LeftBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=1464381277]
+[node name="LeftBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=685333327]
 modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
 layout_mode = 0
 anchor_top = 1.0
@@ -224,10 +269,10 @@ offset_top = -96.0
 offset_right = 96.0
 offset_bottom = -32.0
 mouse_filter = 2
-texture = ExtResource("10_vyrt1")
+texture = ExtResource("12_ytpj4")
 flip_v = true
 
-[node name="RightBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=365357861]
+[node name="RightBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=1183831329]
 modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
 layout_mode = 0
 anchor_left = 1.0
@@ -239,21 +284,21 @@ offset_top = -96.0
 offset_right = -32.0
 offset_bottom = -32.0
 mouse_filter = 2
-texture = ExtResource("10_vyrt1")
+texture = ExtResource("12_ytpj4")
 flip_h = true
 flip_v = true
 
-[node name="Logo" type="TextureRect" parent="UI/Frame/Background" unique_id=620959087]
+[node name="Logo" type="TextureRect" parent="UI/Frame/Background" unique_id=576604328]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 64.0
 offset_right = 128.0
 offset_bottom = 128.0
 mouse_filter = 2
-texture = ExtResource("11_5nsei")
+texture = ExtResource("13_lmnio")
 expand_mode = 1
 
-[node name="Title" type="Label" parent="UI/Frame/Background" unique_id=1163016056]
+[node name="Title" type="Label" parent="UI/Frame/Background" unique_id=1884709186]
 layout_mode = 0
 offset_left = 144.0
 offset_top = 60.0
@@ -262,7 +307,7 @@ offset_bottom = 100.0
 theme_type_variation = &"NeocortexTitle"
 text = "NEOCORTEX"
 
-[node name="DemoName" type="Label" parent="UI/Frame/Background" unique_id=141818534]
+[node name="DemoName" type="Label" parent="UI/Frame/Background" unique_id=1137361470]
 layout_mode = 0
 offset_left = 144.0
 offset_top = 100.0
@@ -271,7 +316,18 @@ offset_bottom = 128.0
 theme_type_variation = &"NeocortexSubtitle"
 text = "Godot SDK · Group Chat Demo"
 
-[node name="Brief" type="Panel" parent="UI/Frame" unique_id=2062030531]
+[node name="BackButton" type="Button" parent="UI/Frame" unique_id=1762292757]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 76.0
+offset_right = 678.0
+offset_bottom = 116.0
+tooltip_text = "Esc"
+theme_override_font_sizes/font_size = 18
+text = "Back to Samples"
+script = ExtResource("14_k12dj")
+
+[node name="Brief" type="Panel" parent="UI/Frame" unique_id=494356173]
 layout_mode = 0
 anchor_left = 1.0
 anchor_top = 0.5
@@ -282,9 +338,9 @@ offset_top = -320.0
 offset_right = -32.0
 offset_bottom = 320.0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jdomg")
+theme_override_styles/panel = SubResource("StyleBoxFlat_rj416")
 
-[node name="Title" type="Label" parent="UI/Frame/Brief" unique_id=1805399748]
+[node name="Title" type="Label" parent="UI/Frame/Brief" unique_id=1853211617]
 layout_mode = 0
 anchor_right = 1.0
 offset_left = 8.0
@@ -294,7 +350,7 @@ offset_bottom = 40.0
 theme_type_variation = &"NeocortexHeading"
 text = "DEMO BRIEF"
 
-[node name="Separator" type="ColorRect" parent="UI/Frame/Brief" unique_id=1718615339]
+[node name="Separator" type="ColorRect" parent="UI/Frame/Brief" unique_id=977675626]
 layout_mode = 0
 anchor_right = 1.0
 offset_left = 8.0
@@ -304,7 +360,7 @@ offset_bottom = 48.0
 mouse_filter = 2
 color = Color(1, 1, 1, 0.1)
 
-[node name="Body" type="RichTextLabel" parent="UI/Frame/Brief" unique_id=752917637]
+[node name="Body" type="RichTextLabel" parent="UI/Frame/Brief" unique_id=1071027482]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -323,7 +379,7 @@ text = "[b]Neocortex's group chat, where characters or the player can join or le
 fit_content = true
 scroll_active = false
 
-[node name="ChatBackdrop" type="TextureRect" parent="UI/Frame" unique_id=1840588022]
+[node name="ChatBackdrop" type="TextureRect" parent="UI/Frame" unique_id=735061012]
 clip_children = 1
 layout_mode = 0
 anchor_top = 0.5
@@ -333,17 +389,17 @@ offset_top = -296.0
 offset_right = 544.0
 offset_bottom = 216.0
 mouse_filter = 2
-texture = SubResource("GradientTexture2D_8i425")
+texture = SubResource("GradientTexture2D_g37bb")
 expand_mode = 1
 
-[node name="Backdrop" type="Panel" parent="UI/Frame/ChatBackdrop" unique_id=204208706]
+[node name="Backdrop" type="Panel" parent="UI/Frame/ChatBackdrop" unique_id=1083004892]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_i5mpw")
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ashc")
 
-[node name="ChatPanel" type="ScrollContainer" parent="UI/Frame" unique_id=1435552477 instance=ExtResource("12_ftvgq")]
+[node name="ChatPanel" type="ScrollContainer" parent="UI/Frame" unique_id=1435552477 instance=ExtResource("15_kefhp")]
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 0
 anchor_top = 0.5
@@ -352,14 +408,14 @@ offset_left = 40.0
 offset_top = -288.0
 offset_right = 536.0
 offset_bottom = 208.0
-theme = ExtResource("7_u4yms")
+theme = ExtResource("9_ftvgq")
 follow_focus = true
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
-script = ExtResource("13_gbdnv")
+script = ExtResource("16_p231u")
 display_sender_names = true
 
-[node name="InputRow" type="HBoxContainer" parent="UI/Frame" unique_id=1550356002]
+[node name="InputRow" type="HBoxContainer" parent="UI/Frame" unique_id=1760713307]
 layout_mode = 0
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -369,25 +425,25 @@ offset_right = 544.0
 offset_bottom = 296.0
 theme_override_constants/separation = 16
 
-[node name="TextChatInput" type="HBoxContainer" parent="UI/Frame/InputRow" unique_id=520649491 instance=ExtResource("14_l4wpg")]
+[node name="TextChatInput" type="HBoxContainer" parent="UI/Frame/InputRow" unique_id=2113118306 instance=ExtResource("17_ox70x")]
 custom_minimum_size = Vector2(320, 64)
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("7_u4yms")
+theme = ExtResource("9_ftvgq")
 theme_override_constants/separation = 16
-script = ExtResource("15_ytpj4")
+script = ExtResource("18_vtgq3")
 placeholder = "Say something..."
 
-[node name="AudioChatInput" type="HBoxContainer" parent="UI/Frame/InputRow" unique_id=209608521 node_paths=PackedStringArray("audio_receiver") instance=ExtResource("16_lmnio")]
+[node name="AudioChatInput" type="HBoxContainer" parent="UI/Frame/InputRow" unique_id=735252701 node_paths=PackedStringArray("audio_receiver") instance=ExtResource("19_e2qu7")]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
-theme = ExtResource("7_u4yms")
+theme = ExtResource("9_ftvgq")
 theme_override_constants/separation = 16
 alignment = 1
-script = ExtResource("17_k12dj")
+script = ExtResource("20_jdomg")
 audio_receiver = NodePath("../../../../GroupChatUI/Microphone")
 
-[node name="CharacterToggles" type="HBoxContainer" parent="UI/Frame" unique_id=843407678]
+[node name="CharacterToggles" type="HBoxContainer" parent="UI/Frame" unique_id=1008232454]
 layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
@@ -398,27 +454,27 @@ offset_bottom = 88.0
 theme_override_constants/separation = 48
 alignment = 1
 
-[node name="Character1Toggle" type="CheckBox" parent="UI/Frame/CharacterToggles" unique_id=777218168]
+[node name="Character1Toggle" type="CheckBox" parent="UI/Frame/CharacterToggles" unique_id=968458546]
 custom_minimum_size = Vector2(240, 48)
 layout_mode = 2
 layout_direction = 3
 text = "Character 1"
 text_direction = 1
 
-[node name="Character2Toggle" type="CheckBox" parent="UI/Frame/CharacterToggles" unique_id=451924263]
+[node name="Character2Toggle" type="CheckBox" parent="UI/Frame/CharacterToggles" unique_id=1506320977]
 custom_minimum_size = Vector2(240, 48)
 layout_mode = 2
 layout_direction = 3
 text = "Character 2"
 text_direction = 1
 
-[node name="GroupChatUI" type="Node" parent="." unique_id=938860000 node_paths=PackedStringArray("director", "chat_panel", "text_input", "audio_input", "voice_input")]
-script = ExtResource("18_kefhp")
+[node name="GroupChatUI" type="Node" parent="." unique_id=578029564 node_paths=PackedStringArray("director", "chat_panel", "text_input", "audio_input", "voice_input")]
+script = ExtResource("21_w8ltp")
 director = NodePath("../GroupDirector")
 chat_panel = NodePath("../UI/Frame/ChatPanel")
 text_input = NodePath("../UI/Frame/InputRow/TextChatInput")
 audio_input = NodePath("../UI/Frame/InputRow/AudioChatInput")
 voice_input = NodePath("Microphone")
 
-[node name="Microphone" type="Node" parent="GroupChatUI" unique_id=163213504]
-script = ExtResource("19_p231u")
+[node name="Microphone" type="Node" parent="GroupChatUI" unique_id=760796164]
+script = ExtResource("22_8i425")

@@ -1,79 +1,96 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/chat_sample.gd" id="1_jr4tf"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_character.gd" id="2_sxskc"]
-[ext_resource type="Theme" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTheme.tres" id="3_2o6mc"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_frame.gd" id="4_wiuq7"]
-[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/dots.png" id="5_bxm0r"]
-[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/corner.png" id="6_mb6im"]
-[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/logo.png" id="7_imrdv"]
-[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexChatPanel.tscn" id="8_dexwf"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_chat_panel.gd" id="9_mrv8d"]
-[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexAudioChatInput.tscn" id="10_oger7"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_audio_chat_input.gd" id="11_7buvh"]
-[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexMicrophoneDropdown.tscn" id="12_7n2po"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_microphone_dropdown.gd" id="13_0r11p"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_chat_ui.gd" id="14_y35wf"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/neocortex_smart_agent.gd" id="15_8sg7c"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/neocortex_face_animator.gd" id="16_rvev4"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/audio/neocortex_audio_receiver.gd" id="17_03c01"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/chat_sample.gd" id="1_wiuq7"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_character.gd" id="2_bxm0r"]
+[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/samples/cora/cora.fbx" id="3_mb6im"]
+[ext_resource type="AnimationLibrary" path="res://addons/neocortex-godot-sdk/samples/cora/cora_animations.res" id="4_imrdv"]
+[ext_resource type="Theme" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTheme.tres" id="5_dexwf"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_frame.gd" id="6_mrv8d"]
+[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/dots.png" id="7_oger7"]
+[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/corner.png" id="8_7buvh"]
+[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/logo.png" id="9_7n2po"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_back_button.gd" id="10_0r11p"]
+[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexChatPanel.tscn" id="11_y35wf"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_chat_panel.gd" id="12_8sg7c"]
+[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexAudioChatInput.tscn" id="13_rvev4"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_audio_chat_input.gd" id="14_03c01"]
+[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexMicrophoneDropdown.tscn" id="15_v2ytg"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_microphone_dropdown.gd" id="16_rudab"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_chat_ui.gd" id="17_pkp5t"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/neocortex_smart_agent.gd" id="18_3lmmr"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/neocortex_face_animator.gd" id="19_86u58"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/audio/neocortex_audio_receiver.gd" id="20_pwufs"]
 
-[sub_resource type="Environment" id="Environment_v2ytg"]
+[sub_resource type="Environment" id="Environment_teolq"]
 background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(0.212, 0.227, 0.259, 1)
 ambient_light_energy = 1.6
 
-[node name="AudioChatDemo" type="Node3D" unique_id=327899560 node_paths=PackedStringArray("chat_ui", "character", "new_session_button", "push_to_talk_toggle")]
-script = ExtResource("1_jr4tf")
+[node name="AudioChatDemo" type="Node3D" unique_id=35659059 node_paths=PackedStringArray("chat_ui", "character", "new_session_button", "push_to_talk_toggle")]
+script = ExtResource("1_wiuq7")
 chat_ui = NodePath("NeocortexChat")
 character = NodePath("Cora")
 new_session_button = NodePath("UI/Frame/NewChatSessionButton")
 push_to_talk_toggle = NodePath("UI/Frame/PushToTalkToggle/Toggle")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1088366239]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1206830458]
 transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0, 1.5, 2)
 fov = 60.0
 
-[node name="DirectionalLight" type="DirectionalLight3D" parent="." unique_id=18534147]
+[node name="DirectionalLight" type="DirectionalLight3D" parent="." unique_id=660323449]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
 light_energy = 1.4
 directional_shadow_max_distance = 30.0
 
-[node name="Environment" type="WorldEnvironment" parent="." unique_id=862475432]
-environment = SubResource("Environment_v2ytg")
+[node name="Environment" type="WorldEnvironment" parent="." unique_id=987298257]
+environment = SubResource("Environment_teolq")
 
-[node name="Cora" type="Node3D" parent="." unique_id=1211001900]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0)
-script = ExtResource("2_sxskc")
+[node name="Cora" type="Node3D" parent="." unique_id=144308974]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
+script = ExtResource("2_bxm0r")
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=529953359]
+[node name="Cora" type="Node3D" parent="Cora" unique_id=1202524141 instance=ExtResource("3_mb6im")]
 
-[node name="Frame" type="Control" parent="UI" unique_id=389772664]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cora" unique_id=648586983]
+root_node = NodePath("../Cora")
+libraries/cora = ExtResource("4_imrdv")
+
+[node name="NameTag" type="Label3D" parent="Cora" unique_id=158262788]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95, 0)
+visible = false
+billboard = 1
+text = "Cora"
+font_size = 26
+outline_size = 6
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1403513560]
+
+[node name="Frame" type="Control" parent="UI" unique_id=1775913762]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
-theme = ExtResource("3_2o6mc")
-script = ExtResource("4_wiuq7")
+theme = ExtResource("5_dexwf")
+script = ExtResource("6_mrv8d")
 
-[node name="Background" type="Control" parent="UI/Frame" unique_id=1148282092]
+[node name="Background" type="Control" parent="UI/Frame" unique_id=1328750308]
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Dots" type="TextureRect" parent="UI/Frame/Background" unique_id=1311960430]
+[node name="Dots" type="TextureRect" parent="UI/Frame/Background" unique_id=470570573]
 modulate = Color(1, 1, 1, 0.1)
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-texture = ExtResource("5_bxm0r")
+texture = ExtResource("7_oger7")
 stretch_mode = 1
 
-[node name="LeftTop" type="TextureRect" parent="UI/Frame/Background" unique_id=707574949]
+[node name="LeftTop" type="TextureRect" parent="UI/Frame/Background" unique_id=644993176]
 modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
 layout_mode = 0
 offset_left = 32.0
@@ -81,9 +98,9 @@ offset_top = 32.0
 offset_right = 96.0
 offset_bottom = 96.0
 mouse_filter = 2
-texture = ExtResource("6_mb6im")
+texture = ExtResource("8_7buvh")
 
-[node name="RightTop" type="TextureRect" parent="UI/Frame/Background" unique_id=440210706]
+[node name="RightTop" type="TextureRect" parent="UI/Frame/Background" unique_id=749049638]
 modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
 layout_mode = 0
 anchor_left = 1.0
@@ -93,10 +110,10 @@ offset_top = 32.0
 offset_right = -32.0
 offset_bottom = 96.0
 mouse_filter = 2
-texture = ExtResource("6_mb6im")
+texture = ExtResource("8_7buvh")
 flip_h = true
 
-[node name="LeftBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=254129181]
+[node name="LeftBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=304082374]
 modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
 layout_mode = 0
 anchor_top = 1.0
@@ -106,10 +123,10 @@ offset_top = -96.0
 offset_right = 96.0
 offset_bottom = -32.0
 mouse_filter = 2
-texture = ExtResource("6_mb6im")
+texture = ExtResource("8_7buvh")
 flip_v = true
 
-[node name="RightBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=297163232]
+[node name="RightBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=2035577088]
 modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
 layout_mode = 0
 anchor_left = 1.0
@@ -121,21 +138,21 @@ offset_top = -96.0
 offset_right = -32.0
 offset_bottom = -32.0
 mouse_filter = 2
-texture = ExtResource("6_mb6im")
+texture = ExtResource("8_7buvh")
 flip_h = true
 flip_v = true
 
-[node name="Logo" type="TextureRect" parent="UI/Frame/Background" unique_id=325175115]
+[node name="Logo" type="TextureRect" parent="UI/Frame/Background" unique_id=1638450276]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 64.0
 offset_right = 128.0
 offset_bottom = 128.0
 mouse_filter = 2
-texture = ExtResource("7_imrdv")
+texture = ExtResource("9_7n2po")
 expand_mode = 1
 
-[node name="Title" type="Label" parent="UI/Frame/Background" unique_id=121575544]
+[node name="Title" type="Label" parent="UI/Frame/Background" unique_id=1747323408]
 layout_mode = 0
 offset_left = 144.0
 offset_top = 60.0
@@ -144,7 +161,7 @@ offset_bottom = 100.0
 theme_type_variation = &"NeocortexTitle"
 text = "NEOCORTEX"
 
-[node name="DemoName" type="Label" parent="UI/Frame/Background" unique_id=503164782]
+[node name="DemoName" type="Label" parent="UI/Frame/Background" unique_id=1425475832]
 layout_mode = 0
 offset_left = 144.0
 offset_top = 100.0
@@ -153,7 +170,18 @@ offset_bottom = 128.0
 theme_type_variation = &"NeocortexSubtitle"
 text = "Godot SDK · Audio Chat Demo"
 
-[node name="Brief" type="Control" parent="UI/Frame" unique_id=1875406639]
+[node name="BackButton" type="Button" parent="UI/Frame" unique_id=305635229]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 76.0
+offset_right = 678.0
+offset_bottom = 116.0
+tooltip_text = "Esc"
+theme_override_font_sizes/font_size = 18
+text = "Back to Samples"
+script = ExtResource("10_0r11p")
+
+[node name="Brief" type="Control" parent="UI/Frame" unique_id=1542972127]
 anchors_preset = 0
 anchor_left = 1.0
 anchor_top = 0.5
@@ -164,14 +192,14 @@ offset_top = -256.0
 offset_bottom = 256.0
 mouse_filter = 2
 
-[node name="Title" type="Label" parent="UI/Frame/Brief" unique_id=479763301]
+[node name="Title" type="Label" parent="UI/Frame/Brief" unique_id=1082814250]
 layout_mode = 0
 anchor_right = 1.0
 offset_bottom = 32.0
 theme_type_variation = &"NeocortexHeading"
 text = "DEMO BRIEF"
 
-[node name="Separator" type="ColorRect" parent="UI/Frame/Brief" unique_id=1933173294]
+[node name="Separator" type="ColorRect" parent="UI/Frame/Brief" unique_id=681819478]
 layout_mode = 0
 anchor_right = 1.0
 offset_top = 36.0
@@ -180,7 +208,7 @@ offset_bottom = 40.0
 mouse_filter = 2
 color = Color(1, 1, 1, 0.1)
 
-[node name="Body" type="RichTextLabel" parent="UI/Frame/Brief" unique_id=2034864455]
+[node name="Body" type="RichTextLabel" parent="UI/Frame/Brief" unique_id=1477251405]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -196,7 +224,7 @@ text = "[b]This scene demonstrates the basic audio chat of Neocortex.[/b]
 fit_content = true
 scroll_active = false
 
-[node name="ChatPanel" type="ScrollContainer" parent="UI/Frame" unique_id=1435552477 instance=ExtResource("8_dexwf")]
+[node name="ChatPanel" type="ScrollContainer" parent="UI/Frame" unique_id=1435552477 instance=ExtResource("11_y35wf")]
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 0
 anchor_left = 0.5
@@ -207,13 +235,13 @@ offset_left = -384.0
 offset_top = -496.0
 offset_right = 384.0
 offset_bottom = -112.0
-theme = ExtResource("3_2o6mc")
+theme = ExtResource("5_dexwf")
 follow_focus = true
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
-script = ExtResource("9_mrv8d")
+script = ExtResource("12_8sg7c")
 
-[node name="AudioChatInput" type="HBoxContainer" parent="UI/Frame" unique_id=1416088369 node_paths=PackedStringArray("audio_receiver") instance=ExtResource("10_oger7")]
+[node name="AudioChatInput" type="HBoxContainer" parent="UI/Frame" unique_id=586826582 node_paths=PackedStringArray("audio_receiver") instance=ExtResource("13_rvev4")]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 0
 anchor_left = 0.5
@@ -224,13 +252,13 @@ offset_left = -384.0
 offset_top = -96.0
 offset_right = 384.0
 offset_bottom = -32.0
-theme = ExtResource("3_2o6mc")
+theme = ExtResource("5_dexwf")
 theme_override_constants/separation = 16
 alignment = 1
-script = ExtResource("11_7buvh")
+script = ExtResource("14_03c01")
 audio_receiver = NodePath("../../../NeocortexChat/Microphone")
 
-[node name="MicrophoneDropdown" type="OptionButton" parent="UI/Frame" unique_id=1996906234 instance=ExtResource("12_7n2po")]
+[node name="MicrophoneDropdown" type="OptionButton" parent="UI/Frame" unique_id=332565224 instance=ExtResource("15_v2ytg")]
 custom_minimum_size = Vector2(256, 48)
 layout_mode = 0
 anchor_left = 1.0
@@ -240,12 +268,12 @@ offset_top = 64.0
 offset_right = -336.0
 offset_bottom = 112.0
 tooltip_text = "Microphone"
-theme = ExtResource("3_2o6mc")
+theme = ExtResource("5_dexwf")
 clip_text = true
 fit_to_longest_item = false
-script = ExtResource("13_0r11p")
+script = ExtResource("16_rudab")
 
-[node name="PushToTalkToggle" type="Control" parent="UI/Frame" unique_id=672014388]
+[node name="PushToTalkToggle" type="Control" parent="UI/Frame" unique_id=979564005]
 anchors_preset = 0
 anchor_left = 1.0
 anchor_top = 1.0
@@ -256,7 +284,7 @@ offset_top = -112.0
 offset_right = -64.0
 offset_bottom = -64.0
 
-[node name="Toggle" type="CheckBox" parent="UI/Frame/PushToTalkToggle" unique_id=1906443648]
+[node name="Toggle" type="CheckBox" parent="UI/Frame/PushToTalkToggle" unique_id=1248487247]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -264,7 +292,7 @@ layout_direction = 3
 text = "Push-to-Talk"
 text_direction = 1
 
-[node name="NewChatSessionButton" type="Button" parent="UI/Frame" unique_id=554248627]
+[node name="NewChatSessionButton" type="Button" parent="UI/Frame" unique_id=976977081]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 0
 anchor_left = 1.0
@@ -275,24 +303,24 @@ offset_right = -64.0
 offset_bottom = 112.0
 text = "New Chat Session"
 
-[node name="NeocortexChat" type="Node" parent="." unique_id=1438056626 node_paths=PackedStringArray("agent", "chat_panel", "audio_input", "voice_input")]
-script = ExtResource("14_y35wf")
+[node name="NeocortexChat" type="Node" parent="." unique_id=193000707 node_paths=PackedStringArray("agent", "chat_panel", "audio_input", "voice_input")]
+script = ExtResource("17_pkp5t")
 agent = NodePath("Character")
 chat_panel = NodePath("../UI/Frame/ChatPanel")
 audio_input = NodePath("../UI/Frame/AudioChatInput")
 voice_input = NodePath("Microphone")
 
-[node name="Character" type="Node" parent="NeocortexChat" unique_id=1809939761 node_paths=PackedStringArray("audio_player", "body")]
-script = ExtResource("15_8sg7c")
+[node name="Character" type="Node" parent="NeocortexChat" unique_id=2023685854 node_paths=PackedStringArray("audio_player", "body")]
+script = ExtResource("18_3lmmr")
 audio_player = NodePath("Voice")
 load_history_on_start = true
 body = NodePath("../../Cora")
 
-[node name="Voice" type="AudioStreamPlayer" parent="NeocortexChat/Character" unique_id=809250743]
+[node name="Voice" type="AudioStreamPlayer" parent="NeocortexChat/Character" unique_id=1467030911]
 
-[node name="FaceAnimator" type="Node" parent="NeocortexChat/Character" unique_id=1646912310 node_paths=PackedStringArray("agent")]
-script = ExtResource("16_rvev4")
+[node name="FaceAnimator" type="Node" parent="NeocortexChat/Character" unique_id=601645987 node_paths=PackedStringArray("agent")]
+script = ExtResource("19_86u58")
 agent = NodePath("..")
 
-[node name="Microphone" type="Node" parent="NeocortexChat" unique_id=1324169791]
-script = ExtResource("17_03c01")
+[node name="Microphone" type="Node" parent="NeocortexChat" unique_id=233295078]
+script = ExtResource("20_pwufs")

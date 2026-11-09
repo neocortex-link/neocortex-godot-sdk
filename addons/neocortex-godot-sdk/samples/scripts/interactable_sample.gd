@@ -5,8 +5,10 @@ extends "res://addons/neocortex-godot-sdk/samples/scripts/chat_sample.gd"
 ## then the red one": the reply stacks GO_TO_LOCATION actions whose target_id names an
 ## interactable, and the character walks to each in turn.
 
-@export var move_speed: float = 2.0
-@export var stop_distance: float = 0.1
+## Matches Cora's walk cycle, so her feet stay planted instead of sliding.
+@export var move_speed: float = 1.6
+## How far from the object's centre she stops. 0 stops exactly on it.
+@export var stop_distance: float = 0.0
 
 func _ready() -> void:
 	super()
@@ -22,12 +24,14 @@ func _go_to_location(action: NeocortexChatAction) -> void:
 
 	character.walking = true
 	while is_inside_tree():
+		# Measured on the floor, so she walks onto the object's centre.
 		var to_target := target.global_position - character.global_position
 		to_target.y = 0.0
-		if to_target.length() <= stop_distance + 0.6:
+		if to_target.length() <= maxf(stop_distance, 0.001):
 			break
 		character.face(target.global_position)
-		character.global_position += to_target.normalized() * move_speed * get_process_delta_time()
+		var step := minf(move_speed * get_process_delta_time(), to_target.length())
+		character.global_position += to_target.normalized() * step
 		await get_tree().process_frame
 	character.walking = false
 

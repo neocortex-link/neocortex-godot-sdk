@@ -52,11 +52,15 @@ var _busy_for := 0.0
 var _error := ""
 
 func _ready() -> void:
+	# One chip per player waits in the scene; players beyond the chips sit out.
+	var chips := players_box.get_child_count()
 	for player in player_names:
-		if not player.strip_edges().is_empty() and _cast.size() < 4:
+		if not player.strip_edges().is_empty() and _cast.size() < chips:
 			_cast.append(NeocortexQuizParticipant.create("p%d" % (_cast.size() + 1), player.strip_edges()))
 	for i in _cast.size():
 		_add_seat(i)
+	for i in range(_cast.size(), chips):
+		players_box.get_child(i).visible = false
 
 	start_button.pressed.connect(_begin)
 	abort_button.pressed.connect(func():
@@ -252,36 +256,20 @@ func _note(text: String, color: Color) -> void:
 # PLAYER CARDS
 # ------------------------------------------------------------------
 
+# Binds the scene's chip for this player: its name, its score, and a press to reply as them.
 func _add_seat(index: int) -> void:
-	var chip := Button.new()
-	chip.custom_minimum_size = Vector2(140, 48)
+	var chip: Button = players_box.get_child(index)
+	var player_name: Label = chip.get_node("Row/Name")
+	player_name.text = _cast[index].display_name
 	chip.tooltip_text = "Reply as %s" % _cast[index].display_name
 	chip.pressed.connect(_select.bind(index))
-	players_box.add_child(chip)
-	var row := HBoxContainer.new()
-	row.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	row.alignment = BoxContainer.ALIGNMENT_CENTER
-	row.add_theme_constant_override("separation", 10)
-	chip.add_child(row)
-	row.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	_seats.append({
 		"id": _cast[index].id,
 		"card": chip,
-		"name": _cell(row, _cast[index].display_name, "NeocortexTitle"),
-		"score": _cell(row, "0", "NeocortexHeading"),
+		"name": player_name,
+		"score": chip.get_node("Row/Score"),
 		"verdict": Color.TRANSPARENT,
 	})
-
-func _cell(row: Control, text: String, variation: String) -> Label:
-	var label := Label.new()
-	label.text = text
-	label.theme_type_variation = variation
-	label.add_theme_font_size_override("font_size", 20)
-	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	label.size_flags_vertical = Control.SIZE_FILL
-	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	row.add_child(label)
-	return label
 
 # The player you reply as is filled amber, like your chat bubbles; the others are
 # outlined in their last verdict's colour, and dimmed once they have answered.

@@ -48,7 +48,7 @@ static func _load() -> ConfigFile:
 ## What this dropdown picks: a character, or a question set for the quiz.
 enum Kind { CHARACTERS, QUESTION_SETS }
 
-var kind := Kind.CHARACTERS
+@export var kind := Kind.CHARACTERS
 var _items: Array = []
 
 func _ready() -> void:
@@ -62,6 +62,7 @@ func _ready() -> void:
 	_load_team()
 
 func _load_team() -> void:
+	clear()
 	disabled = true
 	if NeocortexSettings.get_settings().api_key.is_empty():
 		add_item("Add your API key first")

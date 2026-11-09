@@ -1,25 +1,28 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/quiz_show_sample.gd" id="1_e16s8"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_character.gd" id="2_udxqe"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/neocortex_quiz_agent.gd" id="3_7o08e"]
-[ext_resource type="Theme" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTheme.tres" id="4_7jm7k"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_frame.gd" id="5_anrnf"]
-[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/dots.png" id="6_31ewh"]
-[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/corner.png" id="7_cpa7r"]
-[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/logo.png" id="8_b1tct"]
-[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexChatPanel.tscn" id="9_enyt7"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_chat_panel.gd" id="10_hrqki"]
-[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTextChatInput.tscn" id="11_pjd02"]
-[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_text_chat_input.gd" id="12_c3lhr"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/quiz_show_sample.gd" id="1_7jm7k"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_character.gd" id="2_anrnf"]
+[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/samples/cora/cora.fbx" id="3_31ewh"]
+[ext_resource type="AnimationLibrary" path="res://addons/neocortex-godot-sdk/samples/cora/cora_animations.res" id="4_cpa7r"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/neocortex_quiz_agent.gd" id="5_b1tct"]
+[ext_resource type="Theme" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTheme.tres" id="6_enyt7"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_frame.gd" id="7_hrqki"]
+[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/dots.png" id="8_pjd02"]
+[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/corner.png" id="9_c3lhr"]
+[ext_resource type="Texture2D" path="res://addons/neocortex-godot-sdk/samples/visuals/logo.png" id="10_cjh30"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/samples/scripts/sample_back_button.gd" id="11_esmgx"]
+[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexChatPanel.tscn" id="12_80h8w"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_chat_panel.gd" id="13_6lr0k"]
+[ext_resource type="PackedScene" path="res://addons/neocortex-godot-sdk/nodes/NeocortexTextChatInput.tscn" id="14_25f1w"]
+[ext_resource type="Script" path="res://addons/neocortex-godot-sdk/runtime/ui/neocortex_text_chat_input.gd" id="15_5s3gp"]
 
-[sub_resource type="Environment" id="Environment_cjh30"]
+[sub_resource type="Environment" id="Environment_lfisa"]
 background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(0.212, 0.227, 0.259, 1)
 ambient_light_energy = 1.6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esmgx"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6544"]
 content_margin_left = 16.0
 content_margin_top = 8.0
 content_margin_right = 16.0
@@ -31,8 +34,8 @@ corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 corner_detail = 12
 
-[node name="QuizShowDemo" type="Node3D" unique_id=59665408 node_paths=PackedStringArray("agent", "character", "chat_panel", "answer_input", "start_button", "abort_button", "resync_button", "hint_button", "pass_button", "pass_rest_button", "typed_toggle", "status_label", "progress_label", "keyword_label", "question_label", "upcoming_label", "options_box", "players_box")]
-script = ExtResource("1_e16s8")
+[node name="QuizShowDemo" type="Node3D" unique_id=441067200 node_paths=PackedStringArray("agent", "character", "chat_panel", "answer_input", "start_button", "abort_button", "resync_button", "hint_button", "pass_button", "pass_rest_button", "typed_toggle", "status_label", "progress_label", "keyword_label", "question_label", "upcoming_label", "options_box", "players_box")]
+script = ExtResource("1_7jm7k")
 agent = NodePath("QuizAgent")
 player_names = PackedStringArray("Anna", "Bence", "Csilla", "Dani")
 character = NodePath("Cora")
@@ -53,55 +56,69 @@ upcoming_label = NodePath("UI/Frame/QuestionCard/Content/Upcoming")
 options_box = NodePath("UI/Frame/Options")
 players_box = NodePath("UI/Frame/ReplyAs/Players")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1864329509]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=317452309]
 transform = Transform3D(1, 0, 0, 0, 0.9986295, 0.05233596, 0, -0.05233596, 0.9986295, 0.8, 1.5, 1.3)
 fov = 60.0
 
-[node name="DirectionalLight" type="DirectionalLight3D" parent="." unique_id=1746344541]
+[node name="DirectionalLight" type="DirectionalLight3D" parent="." unique_id=1374650215]
 transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
 light_energy = 1.4
 directional_shadow_max_distance = 30.0
 
-[node name="Environment" type="WorldEnvironment" parent="." unique_id=2079625094]
-environment = SubResource("Environment_cjh30")
+[node name="Environment" type="WorldEnvironment" parent="." unique_id=595015538]
+environment = SubResource("Environment_lfisa")
 
-[node name="Cora" type="Node3D" parent="." unique_id=238635390]
-transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -0.3, 0, 0)
-script = ExtResource("2_udxqe")
+[node name="Cora" type="Node3D" parent="." unique_id=675454769]
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -0.1, 0, 0)
+script = ExtResource("2_anrnf")
 
-[node name="QuizAgent" type="Node" parent="." unique_id=3579803 node_paths=PackedStringArray("audio_player")]
-script = ExtResource("3_7o08e")
+[node name="Cora" type="Node3D" parent="Cora" unique_id=1202524141 instance=ExtResource("3_31ewh")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cora" unique_id=535395028]
+root_node = NodePath("../Cora")
+libraries/cora = ExtResource("4_cpa7r")
+
+[node name="NameTag" type="Label3D" parent="Cora" unique_id=478409719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95, 0)
+visible = false
+billboard = 1
+text = "Cora"
+font_size = 26
+outline_size = 6
+
+[node name="QuizAgent" type="Node" parent="." unique_id=1338157806 node_paths=PackedStringArray("audio_player")]
+script = ExtResource("5_b1tct")
 audio_player = NodePath("HostVoice")
 
-[node name="HostVoice" type="AudioStreamPlayer" parent="QuizAgent" unique_id=744260345]
+[node name="HostVoice" type="AudioStreamPlayer" parent="QuizAgent" unique_id=1837984697]
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=94994920]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1363467322]
 
-[node name="Frame" type="Control" parent="UI" unique_id=7398219]
+[node name="Frame" type="Control" parent="UI" unique_id=111873596]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
-theme = ExtResource("4_7jm7k")
-script = ExtResource("5_anrnf")
+theme = ExtResource("6_enyt7")
+script = ExtResource("7_hrqki")
 
-[node name="Background" type="Control" parent="UI/Frame" unique_id=1332964105]
+[node name="Background" type="Control" parent="UI/Frame" unique_id=1673719572]
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Dots" type="TextureRect" parent="UI/Frame/Background" unique_id=169198855]
+[node name="Dots" type="TextureRect" parent="UI/Frame/Background" unique_id=1712746616]
 modulate = Color(1, 1, 1, 0.1)
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-texture = ExtResource("6_31ewh")
+texture = ExtResource("8_pjd02")
 stretch_mode = 1
 
-[node name="LeftTop" type="TextureRect" parent="UI/Frame/Background" unique_id=241822948]
+[node name="LeftTop" type="TextureRect" parent="UI/Frame/Background" unique_id=828170157]
 modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
 layout_mode = 0
 offset_left = 32.0
@@ -109,9 +126,9 @@ offset_top = 32.0
 offset_right = 96.0
 offset_bottom = 96.0
 mouse_filter = 2
-texture = ExtResource("7_cpa7r")
+texture = ExtResource("9_c3lhr")
 
-[node name="RightTop" type="TextureRect" parent="UI/Frame/Background" unique_id=1786908066]
+[node name="RightTop" type="TextureRect" parent="UI/Frame/Background" unique_id=1174682850]
 modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
 layout_mode = 0
 anchor_left = 1.0
@@ -121,10 +138,10 @@ offset_top = 32.0
 offset_right = -32.0
 offset_bottom = 96.0
 mouse_filter = 2
-texture = ExtResource("7_cpa7r")
+texture = ExtResource("9_c3lhr")
 flip_h = true
 
-[node name="LeftBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=1090692841]
+[node name="LeftBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=818978771]
 modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
 layout_mode = 0
 anchor_top = 1.0
@@ -134,10 +151,10 @@ offset_top = -96.0
 offset_right = 96.0
 offset_bottom = -32.0
 mouse_filter = 2
-texture = ExtResource("7_cpa7r")
+texture = ExtResource("9_c3lhr")
 flip_v = true
 
-[node name="RightBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=13361055]
+[node name="RightBottom" type="TextureRect" parent="UI/Frame/Background" unique_id=2031903932]
 modulate = Color(0.85490197, 0.64705884, 0.1254902, 1)
 layout_mode = 0
 anchor_left = 1.0
@@ -149,21 +166,21 @@ offset_top = -96.0
 offset_right = -32.0
 offset_bottom = -32.0
 mouse_filter = 2
-texture = ExtResource("7_cpa7r")
+texture = ExtResource("9_c3lhr")
 flip_h = true
 flip_v = true
 
-[node name="Logo" type="TextureRect" parent="UI/Frame/Background" unique_id=729117387]
+[node name="Logo" type="TextureRect" parent="UI/Frame/Background" unique_id=721405300]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 64.0
 offset_right = 128.0
 offset_bottom = 128.0
 mouse_filter = 2
-texture = ExtResource("8_b1tct")
+texture = ExtResource("10_cjh30")
 expand_mode = 1
 
-[node name="Title" type="Label" parent="UI/Frame/Background" unique_id=1093231416]
+[node name="Title" type="Label" parent="UI/Frame/Background" unique_id=351709473]
 layout_mode = 0
 offset_left = 144.0
 offset_top = 60.0
@@ -172,7 +189,7 @@ offset_bottom = 100.0
 theme_type_variation = &"NeocortexTitle"
 text = "NEOCORTEX"
 
-[node name="DemoName" type="Label" parent="UI/Frame/Background" unique_id=1553168519]
+[node name="DemoName" type="Label" parent="UI/Frame/Background" unique_id=448929774]
 layout_mode = 0
 offset_left = 144.0
 offset_top = 100.0
@@ -181,7 +198,18 @@ offset_bottom = 128.0
 theme_type_variation = &"NeocortexSubtitle"
 text = "Godot SDK · Quiz Show Demo"
 
-[node name="ChatPanel" type="ScrollContainer" parent="UI/Frame" unique_id=1435552477 instance=ExtResource("9_enyt7")]
+[node name="BackButton" type="Button" parent="UI/Frame" unique_id=1749917063]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 76.0
+offset_right = 678.0
+offset_bottom = 116.0
+tooltip_text = "Esc"
+theme_override_font_sizes/font_size = 18
+text = "Back to Samples"
+script = ExtResource("11_esmgx")
+
+[node name="ChatPanel" type="ScrollContainer" parent="UI/Frame" unique_id=1435552477 instance=ExtResource("12_80h8w")]
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 0
 anchor_left = 0.5
@@ -190,14 +218,14 @@ offset_left = -380.0
 offset_top = 150.0
 offset_right = 380.0
 offset_bottom = 840.0
-theme = ExtResource("4_7jm7k")
+theme = ExtResource("6_enyt7")
 follow_focus = true
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
-script = ExtResource("10_hrqki")
+script = ExtResource("13_6lr0k")
 display_sender_names = true
 
-[node name="Options" type="HFlowContainer" parent="UI/Frame" unique_id=2100044181]
+[node name="Options" type="HFlowContainer" parent="UI/Frame" unique_id=2066125469]
 layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
@@ -209,7 +237,7 @@ theme_override_constants/h_separation = 12
 theme_override_constants/v_separation = 8
 alignment = 1
 
-[node name="ReplyAs" type="HBoxContainer" parent="UI/Frame" unique_id=1511181699]
+[node name="ReplyAs" type="HBoxContainer" parent="UI/Frame" unique_id=1264699843]
 layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
@@ -222,17 +250,121 @@ offset_bottom = -112.0
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="Caption" type="Label" parent="UI/Frame/ReplyAs" unique_id=377556255]
+[node name="Caption" type="Label" parent="UI/Frame/ReplyAs" unique_id=653382648]
 layout_mode = 2
 theme_type_variation = &"NeocortexHeading"
 theme_override_font_sizes/font_size = 18
 text = "REPLY AS"
 
-[node name="Players" type="HBoxContainer" parent="UI/Frame/ReplyAs" unique_id=1300293961]
+[node name="Players" type="HBoxContainer" parent="UI/Frame/ReplyAs" unique_id=1009990686]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="TextChatInput" type="HBoxContainer" parent="UI/Frame" unique_id=802086470 instance=ExtResource("11_pjd02")]
+[node name="Player1" type="Button" parent="UI/Frame/ReplyAs/Players" unique_id=84193722]
+custom_minimum_size = Vector2(140, 48)
+layout_mode = 2
+
+[node name="Row" type="HBoxContainer" parent="UI/Frame/ReplyAs/Players/Player1" unique_id=317018967]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Name" type="Label" parent="UI/Frame/ReplyAs/Players/Player1/Row" unique_id=1936520277]
+layout_mode = 2
+theme_type_variation = &"NeocortexTitle"
+theme_override_font_sizes/font_size = 20
+text = "Anna"
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="UI/Frame/ReplyAs/Players/Player1/Row" unique_id=1422819042]
+layout_mode = 2
+theme_type_variation = &"NeocortexHeading"
+theme_override_font_sizes/font_size = 20
+text = "0"
+vertical_alignment = 1
+
+[node name="Player2" type="Button" parent="UI/Frame/ReplyAs/Players" unique_id=102081779]
+custom_minimum_size = Vector2(140, 48)
+layout_mode = 2
+
+[node name="Row" type="HBoxContainer" parent="UI/Frame/ReplyAs/Players/Player2" unique_id=729894723]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Name" type="Label" parent="UI/Frame/ReplyAs/Players/Player2/Row" unique_id=2087296988]
+layout_mode = 2
+theme_type_variation = &"NeocortexTitle"
+theme_override_font_sizes/font_size = 20
+text = "Bence"
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="UI/Frame/ReplyAs/Players/Player2/Row" unique_id=2091279169]
+layout_mode = 2
+theme_type_variation = &"NeocortexHeading"
+theme_override_font_sizes/font_size = 20
+text = "0"
+vertical_alignment = 1
+
+[node name="Player3" type="Button" parent="UI/Frame/ReplyAs/Players" unique_id=723475675]
+custom_minimum_size = Vector2(140, 48)
+layout_mode = 2
+
+[node name="Row" type="HBoxContainer" parent="UI/Frame/ReplyAs/Players/Player3" unique_id=2056044772]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Name" type="Label" parent="UI/Frame/ReplyAs/Players/Player3/Row" unique_id=1574678353]
+layout_mode = 2
+theme_type_variation = &"NeocortexTitle"
+theme_override_font_sizes/font_size = 20
+text = "Csilla"
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="UI/Frame/ReplyAs/Players/Player3/Row" unique_id=136392178]
+layout_mode = 2
+theme_type_variation = &"NeocortexHeading"
+theme_override_font_sizes/font_size = 20
+text = "0"
+vertical_alignment = 1
+
+[node name="Player4" type="Button" parent="UI/Frame/ReplyAs/Players" unique_id=152338687]
+custom_minimum_size = Vector2(140, 48)
+layout_mode = 2
+
+[node name="Row" type="HBoxContainer" parent="UI/Frame/ReplyAs/Players/Player4" unique_id=1438363945]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Name" type="Label" parent="UI/Frame/ReplyAs/Players/Player4/Row" unique_id=120931713]
+layout_mode = 2
+theme_type_variation = &"NeocortexTitle"
+theme_override_font_sizes/font_size = 20
+text = "Dani"
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="UI/Frame/ReplyAs/Players/Player4/Row" unique_id=384911646]
+layout_mode = 2
+theme_type_variation = &"NeocortexHeading"
+theme_override_font_sizes/font_size = 20
+text = "0"
+vertical_alignment = 1
+
+[node name="TextChatInput" type="HBoxContainer" parent="UI/Frame" unique_id=1096698419 instance=ExtResource("14_25f1w")]
 custom_minimum_size = Vector2(320, 64)
 layout_mode = 0
 anchor_left = 0.5
@@ -243,12 +375,12 @@ offset_left = -380.0
 offset_top = -96.0
 offset_right = 380.0
 offset_bottom = -32.0
-theme = ExtResource("4_7jm7k")
+theme = ExtResource("6_enyt7")
 theme_override_constants/separation = 16
-script = ExtResource("12_c3lhr")
+script = ExtResource("15_5s3gp")
 placeholder = "Wait for the question..."
 
-[node name="QuestionCard" type="Panel" parent="UI/Frame" unique_id=2128735719]
+[node name="QuestionCard" type="Panel" parent="UI/Frame" unique_id=1916339541]
 layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
@@ -256,9 +388,9 @@ offset_left = -544.0
 offset_top = 150.0
 offset_right = -64.0
 offset_bottom = 570.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_esmgx")
+theme_override_styles/panel = SubResource("StyleBoxFlat_i6544")
 
-[node name="Title" type="Label" parent="UI/Frame/QuestionCard" unique_id=168185718]
+[node name="Title" type="Label" parent="UI/Frame/QuestionCard" unique_id=442337261]
 layout_mode = 0
 anchor_right = 1.0
 offset_left = 24.0
@@ -268,7 +400,7 @@ offset_bottom = 56.0
 theme_type_variation = &"NeocortexHeading"
 text = "QUESTION"
 
-[node name="Separator" type="ColorRect" parent="UI/Frame/QuestionCard" unique_id=526030456]
+[node name="Separator" type="ColorRect" parent="UI/Frame/QuestionCard" unique_id=150087192]
 layout_mode = 0
 anchor_right = 1.0
 offset_left = 24.0
@@ -278,7 +410,7 @@ offset_bottom = 64.0
 mouse_filter = 2
 color = Color(1, 1, 1, 0.1)
 
-[node name="Content" type="VBoxContainer" parent="UI/Frame/QuestionCard" unique_id=1059002065]
+[node name="Content" type="VBoxContainer" parent="UI/Frame/QuestionCard" unique_id=1966698961]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -288,34 +420,34 @@ offset_right = -24.0
 offset_bottom = -24.0
 theme_override_constants/separation = 12
 
-[node name="Progress" type="Label" parent="UI/Frame/QuestionCard/Content" unique_id=1321118271]
+[node name="Progress" type="Label" parent="UI/Frame/QuestionCard/Content" unique_id=1683729046]
 layout_mode = 2
 theme_type_variation = &"NeocortexSubtitle"
 
-[node name="Keyword" type="Label" parent="UI/Frame/QuestionCard/Content" unique_id=1162353717]
+[node name="Keyword" type="Label" parent="UI/Frame/QuestionCard/Content" unique_id=264885141]
 layout_mode = 2
 theme_type_variation = &"NeocortexHeading"
 
-[node name="Question" type="Label" parent="UI/Frame/QuestionCard/Content" unique_id=1659772451]
+[node name="Question" type="Label" parent="UI/Frame/QuestionCard/Content" unique_id=912775070]
 layout_mode = 2
 theme_type_variation = &"NeocortexTitle"
 theme_override_font_sizes/font_size = 26
 autowrap_mode = 3
 
-[node name="Spacer" type="Control" parent="UI/Frame/QuestionCard/Content" unique_id=674462670]
+[node name="Spacer" type="Control" parent="UI/Frame/QuestionCard/Content" unique_id=1521731209]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Upcoming" type="Label" parent="UI/Frame/QuestionCard/Content" unique_id=52904563]
+[node name="Upcoming" type="Label" parent="UI/Frame/QuestionCard/Content" unique_id=888064272]
 layout_mode = 2
 theme_type_variation = &"NeocortexSubtitle"
 
-[node name="Status" type="Label" parent="UI/Frame/QuestionCard/Content" unique_id=1018848997]
+[node name="Status" type="Label" parent="UI/Frame/QuestionCard/Content" unique_id=1312431067]
 layout_mode = 2
 theme_type_variation = &"NeocortexSubtitle"
 autowrap_mode = 3
 
-[node name="Brief" type="Control" parent="UI/Frame" unique_id=1431361625]
+[node name="Brief" type="Control" parent="UI/Frame" unique_id=1493316045]
 anchors_preset = 0
 anchor_left = 1.0
 anchor_right = 1.0
@@ -325,14 +457,14 @@ offset_right = -64.0
 offset_bottom = 900.0
 mouse_filter = 2
 
-[node name="Title" type="Label" parent="UI/Frame/Brief" unique_id=2015706085]
+[node name="Title" type="Label" parent="UI/Frame/Brief" unique_id=1341761315]
 layout_mode = 0
 anchor_right = 1.0
 offset_bottom = 32.0
 theme_type_variation = &"NeocortexHeading"
 text = "DEMO BRIEF"
 
-[node name="Separator" type="ColorRect" parent="UI/Frame/Brief" unique_id=1627611128]
+[node name="Separator" type="ColorRect" parent="UI/Frame/Brief" unique_id=1273888511]
 layout_mode = 0
 anchor_right = 1.0
 offset_top = 36.0
@@ -341,7 +473,7 @@ offset_bottom = 40.0
 mouse_filter = 2
 color = Color(1, 1, 1, 0.1)
 
-[node name="Body" type="RichTextLabel" parent="UI/Frame/Brief" unique_id=2104578493]
+[node name="Body" type="RichTextLabel" parent="UI/Frame/Brief" unique_id=1223654784]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -359,7 +491,7 @@ text = "[b]Cora hosts a quiz for one to four players.[/b]
 fit_content = true
 scroll_active = false
 
-[node name="RunButtons" type="HBoxContainer" parent="UI/Frame" unique_id=1126348769]
+[node name="RunButtons" type="HBoxContainer" parent="UI/Frame" unique_id=302576548]
 layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
@@ -370,22 +502,22 @@ offset_bottom = 112.0
 theme_override_constants/separation = 16
 alignment = 2
 
-[node name="StartButton" type="Button" parent="UI/Frame/RunButtons" unique_id=524143233]
+[node name="StartButton" type="Button" parent="UI/Frame/RunButtons" unique_id=1415781525]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 text = "Start"
 
-[node name="AbortButton" type="Button" parent="UI/Frame/RunButtons" unique_id=929654686]
+[node name="AbortButton" type="Button" parent="UI/Frame/RunButtons" unique_id=250566856]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 text = "Abort"
 
-[node name="ResyncButton" type="Button" parent="UI/Frame/RunButtons" unique_id=1461171103]
+[node name="ResyncButton" type="Button" parent="UI/Frame/RunButtons" unique_id=961910905]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 text = "Resync"
 
-[node name="TurnButtons" type="HBoxContainer" parent="UI/Frame" unique_id=1853774999]
+[node name="TurnButtons" type="HBoxContainer" parent="UI/Frame" unique_id=668540164]
 layout_mode = 0
 anchor_left = 1.0
 anchor_top = 1.0
@@ -398,28 +530,28 @@ offset_bottom = -32.0
 theme_override_constants/separation = 12
 alignment = 2
 
-[node name="HintButton" type="Button" parent="UI/Frame/TurnButtons" unique_id=891306321]
+[node name="HintButton" type="Button" parent="UI/Frame/TurnButtons" unique_id=1256015283]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 20
 text = "Hint"
 
-[node name="PassButton" type="Button" parent="UI/Frame/TurnButtons" unique_id=1365882668]
+[node name="PassButton" type="Button" parent="UI/Frame/TurnButtons" unique_id=1930184465]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 20
 text = "Pass"
 
-[node name="PassRestButton" type="Button" parent="UI/Frame/TurnButtons" unique_id=734595097]
+[node name="PassRestButton" type="Button" parent="UI/Frame/TurnButtons" unique_id=1750640986]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 20
 text = "Pass Everyone"
 
-[node name="TypedToggle" type="Control" parent="UI/Frame" unique_id=747990446]
+[node name="TypedToggle" type="Control" parent="UI/Frame" unique_id=1863318888]
 anchors_preset = 0
 anchor_left = 1.0
 anchor_top = 1.0
@@ -430,7 +562,7 @@ offset_top = -160.0
 offset_right = -64.0
 offset_bottom = -112.0
 
-[node name="Toggle" type="CheckBox" parent="UI/Frame/TypedToggle" unique_id=425249604]
+[node name="Toggle" type="CheckBox" parent="UI/Frame/TypedToggle" unique_id=431909110]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -7,7 +7,10 @@ extends ScrollContainer
 const DASHBOARD_KEYS_URL := "https://neocortex.link/dashboard/api-keys"
 const DASHBOARD_CHARACTERS_URL := "https://neocortex.link/dashboard/characters"
 const DASHBOARD_QUESTION_SETS_URL := "https://neocortex.link/dashboard/modules/quiz/sets"
-const LOGO := preload("res://addons/neocortex-godot-sdk/images/ui/neocortex_logo.png")
+const BANNER := preload("res://addons/neocortex-godot-sdk/images/banner.png")
+const SAMPLES_SCENE := "res://addons/neocortex-godot-sdk/samples/neocortex_samples.tscn"
+## Rows a character or question set list shows before it scrolls.
+const LIST_MAX_ROWS := 5
 const ACCENT := Color("#F59E0B")
 const GOOD := Color("#5CC98F")
 const BAD := Color("#EE6B6B")
@@ -49,20 +52,22 @@ func _build() -> void:
 	root.add_theme_constant_override("separation", 8)
 	add_child(root)
 
-	# Header: the mark, the name and version, and whether the key works.
+	# Header: the Neocortex banner, then the version and whether the key works.
+	var banner := TextureRect.new()
+	# The banner without its outer tenth on each side.
+	var cropped := AtlasTexture.new()
+	cropped.atlas = BANNER
+	var full := BANNER.get_size()
+	cropped.region = Rect2(full.x * 0.1, 0, full.x * 0.8, full.y)
+	banner.texture = cropped
+	banner.expand_mode = TextureRect.EXPAND_FIT_HEIGHT_PROPORTIONAL
+	banner.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	banner.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	root.add_child(banner)
 	var header := HBoxContainer.new()
 	header.add_theme_constant_override("separation", 8)
 	root.add_child(header)
-	var logo := TextureRect.new()
-	logo.texture = LOGO
-	logo.custom_minimum_size = Vector2(22, 22) * _scale()
-	logo.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	logo.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	header.add_child(logo)
-	var title := _label("Neocortex")
-	title.theme_type_variation = &"HeaderSmall"
-	header.add_child(title)
-	var version := _muted(_version())
+	var version := _muted("Neocortex SDK " + _version())
 	version.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.add_child(version)
 	_chip = _label("")
@@ -104,15 +109,18 @@ func _build() -> void:
 	# The team's characters and question sets.
 	var characters_card := _card(root, "Characters")
 	_character_count = _count_label(characters_card)
-	_characters = VBoxContainer.new()
-	_characters.add_theme_constant_override("separation", 2)
-	characters_card.add_child(_characters)
+	_characters = _scrolling_list(characters_card)
 	_characters.add_child(_muted("Add a key to list your characters."))
+	_fit_list.call_deferred(_characters)
 	var sets_card := _card(root, "Question Sets")
 	_question_set_count = _count_label(sets_card)
-	_question_sets = VBoxContainer.new()
-	_question_sets.add_theme_constant_override("separation", 2)
-	sets_card.add_child(_question_sets)
+	_question_sets = _scrolling_list(sets_card)
+
+	var samples := _button("Open Samples", func(): EditorInterface.open_scene_from_path(SAMPLES_SCENE))
+	samples.icon = _icon("PackedScene")
+	samples.tooltip_text = "Open the sample launcher; run it with F6"
+	samples.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	root.add_child(samples)
 
 ## Shows the saved settings again and refreshes the account (the settings window and
 ## the dock share one settings resource).
@@ -184,6 +192,7 @@ func _refresh() -> void:
 
 func _fill(list: VBoxContainer, count: Label, items, property: String, create_text: String, create_url: String) -> void:
 	_clear(list)
+	_fit_list.call_deferred(list)
 	count.text = ""
 	if items == null:
 		list.add_child(_muted("Not loaded."))
@@ -262,6 +271,28 @@ func _card(parent: Control, heading: String) -> VBoxContainer:
 	body.add_theme_constant_override("separation", 4)
 	column.add_child(body)
 	return body
+
+## A list that grows with its rows up to LIST_MAX_ROWS, then scrolls.
+func _scrolling_list(body: VBoxContainer) -> VBoxContainer:
+	var scroll := ScrollContainer.new()
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	body.add_child(scroll)
+	var list := VBoxContainer.new()
+	list.add_theme_constant_override("separation", 2)
+	list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	scroll.add_child(list)
+	return list
+
+# Sizes a list's scroll area to its rows, capped, once the old rows have gone.
+func _fit_list(list: VBoxContainer) -> void:
+	await get_tree().process_frame
+	var scroll := list.get_parent() as ScrollContainer
+	var height := 0.0
+	var shown := mini(list.get_child_count(), LIST_MAX_ROWS)
+	for i in shown:
+		height += (list.get_child(i) as Control).get_combined_minimum_size().y
+	height += list.get_theme_constant("separation") * maxi(shown - 1, 0)
+	scroll.custom_minimum_size.y = height
 
 func _count_label(body: VBoxContainer) -> Label:
 	var count := _muted("")
