@@ -146,7 +146,7 @@ material_override = SubResource("StandardMaterial3D_6e51b")
 mesh = SubResource("BoxMesh_vwhr3")
 
 [node name="YellowCircle" type="Node3D" parent="." unique_id=1904849470]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2438135, 0, 0.5411693)
 script = ExtResource("6_ydqrk")
 properties = Array[Dictionary]([{
 "name": "color",
