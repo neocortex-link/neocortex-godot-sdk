@@ -8,7 +8,7 @@ Moves the SDK to the Neocortex API v3 and adds group conversations, quizzes, act
 - **Group conversations** with `NeocortexGroupDirector`: up to three characters in one conversation. The director picks who speaks, or `send_to` addresses one character; `continue_scene` lets them talk among themselves; `send_audio` takes the player's voice; characters can join and leave while it runs.
 - **Quizzes** with `NeocortexQuizAgent` and `NeocortexQuizUI`: a character hosts a quiz from a question set, for one player or several, with typed answers, tapped options, hints, passes, scores, and `resync` after a lost turn.
 - **Chat lines**: replies arrive as lines, each with its emotion (`chat_line_started`, `emotion_changed`, `composing_next_line`, `reply_finished`). `chat_lines_mode` picks a voice per line, one clip, text only, or the whole reply. Voiced modes check your credits first.
-- **Actions with targets**: several actions per reply, each with a `target_id`; `register_action(keyword, handler)` on the agent; `action_trigger` decides when they run; `actions_completed`.
+- **Actions with targets**: several actions per reply, each with a `target_id`; `register_action(keyword, handler)` on the agent; `action_trigger` decides when they run; `delay_between_actions` pauses between them; `actions_completed`.
 - **Streamed speech**: the voice starts playing while the rest is still being generated.
 - **Streamed replies** (experimental): `stream_replies` and `text_delta`, so the first line is spoken while the reply is still being written.
 - **Perception**: interactables carry an id, properties and an optional character id, and the agent sends its own position, with radius and count limits.
