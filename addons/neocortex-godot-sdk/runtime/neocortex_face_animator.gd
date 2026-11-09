@@ -5,11 +5,15 @@ extends Node
 ## audio analysis, and timed to each clip. Works with ARKit style blend shapes (jawOpen,
 ## mouthFunnel, mouthPucker...) on MeshInstance3D nodes.
 ##
-## Add it under (or beside) a NeocortexSmartAgent. Meshes default to every
-## MeshInstance3D with blend shapes under the agent's body (or its parent).
+## Add it under (or beside) a NeocortexSmartAgent, or set `quiz_agent` to follow a quiz
+## host. Meshes default to every MeshInstance3D with blend shapes under the agent's body
+## (or its parent).
 
 ## The agent whose speech this face follows. Defaults to the parent or a sibling.
 @export var agent: NeocortexSmartAgent
+## A quiz host whose lines this face follows, instead of an agent. Defaults to the
+## parent or a sibling when there is no agent.
+@export var quiz_agent: NeocortexQuizAgent
 ## The node the face meshes are under. Empty: the agent's body, else its parent.
 @export var face_root: Node
 ## The meshes to animate. Empty: every MeshInstance3D with blend shapes under face_root.
@@ -69,6 +73,12 @@ func _ready() -> void:
 		agent.chat_line_started.connect(_on_line_started)
 		agent.audio_response_received.connect(_on_audio)
 		agent.reply_finished.connect(rest)
+	elif quiz_agent == null:
+		quiz_agent = _find_quiz_agent()
+	if agent == null and quiz_agent != null:
+		# Each host line is raised as it becomes audible; the mouth rests when the voice stops.
+		quiz_agent.host_line.connect(func(line: NeocortexQuizLine): _on_host_line.call_deferred(line))
+		quiz_agent.host_finished.connect(rest)
 
 ## Moves the mouth through the visemes of `text` over `duration` seconds.
 func play_text(text: String, duration: float) -> void:
@@ -134,7 +144,7 @@ func _process(delta: float) -> void:
 		wanted = _targets
 	elif not _timeline.is_empty():
 		var elapsed := now - _timeline_start_ms
-		var player = agent.audio_player if agent != null else null
+		var player = _voice()
 		if is_instance_valid(player) and player.playing:
 			_audio_started = true
 		# Once the voice has started and stopped, the mouth rests with it.
@@ -204,6 +214,33 @@ func _mesh_root() -> Node:
 	if agent != null and agent.get_parent() != null:
 		return agent.get_parent()
 	return get_parent()
+
+# Deferred, so a whole clip is already on the player and gives the line its length; a
+# streamed line has none yet and is timed on an estimate.
+func _on_host_line(line: NeocortexQuizLine) -> void:
+	var text := line.speech_text()
+	var duration := maxf(0.5, text.length() * SECONDS_PER_CHARACTER)
+	var player = _voice()
+	if is_instance_valid(player) and player.stream != null and not (player.stream is AudioStreamGenerator):
+		duration = maxf(0.5, player.stream.get_length())
+	play_text(text, duration)
+
+# The player the voice comes out of, to rest the mouth when it stops.
+func _voice() -> Node:
+	if agent != null:
+		return agent.audio_player
+	if quiz_agent != null:
+		return quiz_agent.audio_player
+	return null
+
+func _find_quiz_agent() -> NeocortexQuizAgent:
+	if get_parent() is NeocortexQuizAgent:
+		return get_parent()
+	if get_parent() != null:
+		for sibling in get_parent().get_children():
+			if sibling is NeocortexQuizAgent:
+				return sibling
+	return null
 
 func _find_agent() -> NeocortexSmartAgent:
 	if get_parent() is NeocortexSmartAgent:
