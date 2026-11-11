@@ -41,9 +41,6 @@ extends Node
 ## Play speech as it is synthesized (/v3/audio/stream) instead of waiting for whole
 ## clips. Falls back to whole clips on a server without the endpoint.
 @export var stream_speech: bool = true
-## EXPERIMENTAL, Godot only: stream the reply itself (/v3/chat/stream), so the first
-## line starts while the rest is still being written. Raises text_delta as text arrives.
-@export var stream_replies: bool = false
 
 @export_group("Perception")
 ## Where the character stands, for perception. Defaults to the parent when it is a Node3D.
@@ -73,8 +70,6 @@ signal reply_finished
 signal actions_completed
 ## An action arrived that has no handler registered.
 signal unhandled_action(action: NeocortexChatAction)
-## stream_replies only: text of the line being written, as it arrives.
-signal text_delta(text: String, line_index: int)
 
 enum _ReplyState { IDLE, WAITING_FOR_REPLY, PLAYING }
 
@@ -252,9 +247,6 @@ func _dispatch_next() -> void:
 	next.call()
 
 func _send(input: Variant, produce_audio: bool) -> void:
-	if stream_replies:
-		_send_streamed(input)
-		return
 	if input is AudioStreamWAV:
 		if produce_audio:
 			_api_request.send_audio_to_audio(character_id, input)
@@ -462,103 +454,6 @@ func _finish_reply(token: int) -> void:
 		_run_pending_actions()
 	_rearm_microphone()
 	_dispatch_next()
-
-# ------------------------------------------------------------------
-# STREAMED REPLIES (Godot only, experimental)
-# ------------------------------------------------------------------
-
-func _send_streamed(input: Variant) -> void:
-	var message := ""
-	if input is AudioStreamWAV:
-		message = await _api_request.request_transcription(character_id, input)
-		if message.is_empty():
-			return # request_failed already raised and handled
-		transcription_received.emit(message)
-	else:
-		message = str(input)
-
-	_playback_token += 1
-	var token := _playback_token
-	var lines: Array[NeocortexChatLine] = []
-	var feed := { "done": false, "failed": false, "response": null }
-
-	var stream := _api_request.request_chat_stream(
-		PackedStringArray([character_id]), get_session_id(), message, "", 0, null, null, character_id, false)
-	stream.session_started.connect(func(session_id: String):
-		if not session_id.is_empty():
-			NeocortexSessionManager.set_session_id(character_id, session_id))
-	stream.text_delta.connect(func(_id: String, text: String, index: int): text_delta.emit(text, index))
-	stream.line_completed.connect(func(_id: String, line: NeocortexChatLine): lines.append(line))
-	stream.completed.connect(func(turn: NeocortexGroupChatResponse):
-		var speaker: NeocortexGroupMessage = turn.messages[0] if not turn.messages.is_empty() else null
-		var response := NeocortexChatResponse.from_group_message(speaker, turn.metadata)
-		response.session_id = turn.session_id
-		if not turn.session_id.is_empty():
-			NeocortexSessionManager.set_session_id(character_id, turn.session_id)
-		feed.response = response
-		feed.done = true)
-	stream.failed.connect(func(error: NeocortexApiError):
-		feed.failed = true
-		feed.done = true
-		if not error.cancelled:
-			_handle_request_error(error))
-
-	# OFF and SINGLE_AUDIO need the whole reply; the others play lines as they land.
-	var progressive := chat_lines_mode == NeocortexEnums.ChatLinesMode.TEXT \
-		or chat_lines_mode == NeocortexEnums.ChatLinesMode.PER_LINE_AUDIO
-	var played := 0
-	var usage_checked := false
-	var text_only := audio_player == null
-
-	while _is_current(token):
-		if progressive and played < lines.size():
-			if _state == _ReplyState.WAITING_FOR_REPLY:
-				_state = _ReplyState.PLAYING
-				_cancel_audio()
-			var line := lines[played]
-			played += 1
-			if chat_lines_mode == NeocortexEnums.ChatLinesMode.TEXT or text_only:
-				if played > 1:
-					composing_next_line.emit()
-					await _wait_for_seconds(_line_delay(lines[played - 2].text), token)
-				_begin_line(line)
-			else:
-				if not usage_checked:
-					usage_checked = true
-					var usage := await _get_usage()
-					text_only = usage != null and usage.status == NeocortexEnums.UsageStatus.EMPTY
-					if text_only:
-						_begin_line(line)
-						continue
-				await _speak_line(line, token)
-			continue
-		if feed.done:
-			break
-		await get_tree().process_frame
-
-	if not _is_current(token):
-		return
-	if feed.failed:
-		# Lines already played: the reply ends here rather than hanging mid way.
-		if _state == _ReplyState.PLAYING:
-			_finish_reply(token)
-		return
-
-	var response: NeocortexChatResponse = feed.response
-	chat_response_received.emit(response)
-	_capture_actions(response.actions)
-
-	if chat_lines_mode == NeocortexEnums.ChatLinesMode.OFF:
-		return
-	if not progressive:
-		_state = _ReplyState.PLAYING
-		await _play_reply(response.resolve_lines(), token)
-		return
-	# Lines the stream never sent separately (an older server) still get played.
-	if played == 0:
-		await _play_reply(response.resolve_lines(), token)
-		return
-	_finish_reply(token)
 
 # ------------------------------------------------------------------
 # ACTIONS

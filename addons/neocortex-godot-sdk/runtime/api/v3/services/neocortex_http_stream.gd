@@ -1,10 +1,9 @@
 class_name NeocortexHttpStream
 extends Node
 
-## One HTTP request whose body is handed over as it arrives, for the endpoints that
-## stream: /v3/audio/stream (a WAV header, then PCM chunks) and /v3/chat/stream
-## (Server-Sent Events). HTTPRequest only hands over a finished body, so this drives
-## an HTTPClient itself, polling once per frame.
+## One HTTP request whose body is handed over as it arrives, for the endpoint that
+## streams: /v3/audio/stream (a WAV header, then PCM chunks). HTTPRequest only hands
+## over a finished body, so this drives an HTTPClient itself, polling once per frame.
 ##
 ## Usage: add it to the tree, connect the signals, call open(). It frees itself once
 ## finished unless keep_alive is set.
