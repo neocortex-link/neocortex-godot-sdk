@@ -81,8 +81,6 @@ func _ready() -> void:
 
 In the voiced modes the agent checks your credits first (a free call, cached for 30 s): when they are gone it shows text only, and when they are low it voices the reply as one clip.
 
-`stream_replies` (experimental) streams the reply itself, so the first line is spoken while the rest is still being written; `text_delta` carries the text as it arrives.
-
 ## Handling errors
 
 Every component raises `request_failed(message)` and `request_error(NeocortexApiError)`. The error has the HTTP `status`, the API's `code`, and helpers:

@@ -172,39 +172,6 @@ func request_group_chat(character_ids: PackedStringArray, session_id: String = "
 		speaker_character_id: String = "", max_turns: int = 0) -> NeocortexGroupChatResponse:
 	return await request_chat(character_ids, session_id, message, speaker_character_id, max_turns)
 
-## EXPERIMENTAL. Starts a streamed chat turn on /v3/chat/stream and returns it at
-## once; connect to its signals or `await stream.wait()`. Same arguments as
-## request_chat(). Failures are raised on the stream's `failed` signal and, unless
-## report_errors is false, on this node's request_failed too.
-func request_chat_stream(
-		character_ids: PackedStringArray,
-		session_id: String = "",
-		message: String = "",
-		speaker_character_id: String = "",
-		max_turns: int = 0,
-		metadata = null,
-		events = null,
-		self_character_id: String = "",
-		report_errors: bool = true) -> NeocortexChatStream:
-	var solo_id := character_ids[0] if character_ids.size() == 1 else ""
-	var stream := NeocortexChatStream.new(solo_id)
-
-	if not _set_headers():
-		var missing := NeocortexApiError.new()
-		missing.message = last_error
-		stream.call_deferred("_fail", missing)
-		return stream
-
-	var data := _chat_body(character_ids, session_id, message, speaker_character_id, max_turns, metadata, events, self_character_id, "")
-	var http := _open_stream("%s/chat/stream" % get_base_url(), get_bytes(data), TURN_TIMEOUT_SECONDS,
-		PackedStringArray(["Accept: text/event-stream"]))
-	stream.attach(http)
-	if report_errors:
-		stream.failed.connect(func(error: NeocortexApiError):
-			if not error.cancelled:
-				_report_error(error))
-	return stream
-
 func _chat_body(character_ids: PackedStringArray, session_id: String, message: String, speaker_character_id: String,
 		max_turns: int, metadata, events, self_character_id: String, play_as: String) -> Dictionary:
 	var data := {
